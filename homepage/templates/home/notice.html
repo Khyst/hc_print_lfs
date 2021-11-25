@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container container_notice">
+    <div class="row">
+        <div class="col-lg-2 intro_company_title">
+            <div class="">
+
+              <div class="col-lg-12 col-md-3 col-sm-6 intro_index_tab">
+                <img src="{% static 'assets/images/mobile_index_tab.png' %}" alt="">
+                <div class="title_wrap">
+                  <!-- <a class="navbar-brand" href="#"> 회사 소개 </a> -->
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-9 col-sm-6 intro_index_menu">
+                <nav class="nav nav-pills">
+                  <div class="intro_index_menu_list">
+                    <img src="{% static 'assets/images/mobile_index_tab_menu_1.png' %}" alt="">
+                    <div class="content_wrap">
+                      <!-- <a class="nav-link ml-3 my-1" href="#item-1">회사정보</a>  -->
+                    </div> 
+                  </div>
+                  <div class="intro_index_menu_list"> 
+                    <img src="{% static 'assets/images/mobile_index_tab_menu_1.png' %}" alt="">
+                    <div class="content_wrap">
+                      <!-- <a class="nav-link ml-3 my-1" href="#item-1-1">오시는 길</a>  -->
+                    </div> 
+                  </div> 
+                  <div class="intro_index_menu_list"> 
+                    <img src="{% static 'assets/images/mobile_index_tab_menu_1.png' %}" alt="">
+                    <div class="content_wrap">
+                      <!-- <a class="nav-link ml-3 my-1" href="#item-3-1">각종 전화번호</a>  -->
+                    </div> 
+                  </div> 
+                  <div class="intro_index_menu_list"> 
+                    <img src="{% static 'assets/images/mobile_index_tab_menu_1.png' %}" alt="">
+                    <div class="content_wrap">
+                      <!-- <a class="nav-link ml-3 my-1" href="#item-3-2">대표</a>  -->
+                    </div> 
+                  </div> 
+                </nav>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-lg-10 notice_board_content">
+          <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+              <div class="top_brand">
+                <h1> NOTICE </h1>
+                <p> 고객의 신뢰를 바탕으로 성장하는 회사, </p>
+                <p> 내가 원하는 그 이상의 인쇄를 여러분과 함께 합니다. </p>
+              </div>
+
+              <table class="table table-striped notice_board_table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">번호</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">작성일자</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <th scope="row">공지</th>
+                    <td> <a href="">***논문접수방법</a> </td>
+                    <td>혜천문화사</td>
+                    <td>2019-04-08</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td> <a href="">혜천문화사 반응형 홈페이지가 오픈되었습니다</a></td>
+                    <td>혜천문화사</td>
+                    <td>2021-11-10</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td> <a href="">논문 제작에는 혜천문화사가 강합니다</a></td>
+                    <td>혜천문화사</td>
+                    <td>2021-11-14</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

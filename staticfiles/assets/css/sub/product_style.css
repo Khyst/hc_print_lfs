@@ -1,0 +1,483 @@
+/* 제품 페이지 컴포넌트  */
+/* product.html */
+
+.product_view{
+    position: relative;
+}
+
+.info_pc{
+    display: none;
+}
+
+.info_mobile{
+    display: inline;
+    position: relative;
+    margin: 0 auto;
+}
+
+.info_mobile_wrap{
+    position: absolute;
+    left: 0%;
+    width: 100%;
+}
+
+.home_banner_lg{
+    display: none;
+}
+
+.view_right{
+    display: none;
+}
+
+.home_banner{
+    margin-top: 3%;
+}
+.owl-nav .owl-prev span{
+    color: #74b9ff;
+}
+
+.owl-nav .owl-next span{
+    color: #74b9ff;
+}
+
+.slider_title_menu{
+    margin: 0 auto;
+    width: auto;
+    text-align: center;
+}
+
+.slider_title_menu .slider_title_menu_text{
+    font-weight:bold; 
+    font-size: 2rem; 
+    color:#636e72;
+    /* border: solid 1px #95a5a6;
+    border-radius: 2px; */
+}
+
+.product_view .owl-nav .fas{
+    font-size: 3.25rem;
+}
+
+.product_click_info{
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    position: absolute;
+    left: 25%;
+    border-radius: 20px;
+    border: 1px soild black;
+    font-size: 1.25em;
+    color: #2980b9;
+}
+
+.product_click_info .candidate_1{
+    display: none;
+}
+.product_click_info .candidate_2{
+    display: block;
+}
+
+.pc_product_view svg{
+    color: #CC6666;
+}
+
+.card_wrap{
+    /* height: auto;
+    border-bottom: 1px solid gray !important; */
+}
+
+.banner_list_sm{
+    display: flex;
+}
+
+.poster_title{
+    margin-top: 5px;
+    background-color: white;
+    border-radius: 2%;
+    box-shadow: 5px 5px 2px gray;
+    font-size: 2rem;
+    width: auto;
+    margin: 20px auto;
+}
+
+.item_title{
+    margin: 5px auto;
+}
+
+.item_title span{
+    margin: 0 auto;
+}
+
+.pc_product_view .row .col-2{
+    cursor: pointer;
+}
+
+.product_items_wrap{
+    /* background-color: #dfe6e9; */
+}
+
+.poster_wrap .row .card{
+    box-shadow: 5px 5px 2px gray;
+    margin-bottom: 50px;
+    border-radius: 2%;
+}
+
+.poster_wrap .row .card img{
+    margin-top: 20px;
+    height: auto;
+    background-size: contain !important;
+}
+
+body > header > div > div > div > nav > a.logo{
+    margin-left: 0 !important;
+}
+
+body > header > div > div > div > nav > a.menu-trigger{
+    right: 25px !important;
+}
+
+.product_view{
+    display: block;
+}
+
+.pc_product_view{
+    display: none;
+}
+
+.product_list{
+margin-bottom: 40px;
+/*height: auto;*/
+width: 100%;
+height: 100%;
+}
+
+body > div.container.poster_wrap > div > div > div > div.li.col-lg-8 > img{
+width: 100%;
+height: 100%;
+
+background-size: contain;
+}
+
+body > div.container.poster_wrap > div > div > div > div.li.col-lg-8{
+width: 80%;
+height: 100%;
+}
+
+.home_banner{
+margin-top: 10x;
+}
+
+.banner_list{
+width: auto;
+height: auto;
+}
+
+.banner_list img{
+width: 200px;
+height: 200px;
+}
+
+.home_banner_lg{
+    position:fixed;
+    right: 1%;
+    top: 2%;
+    z-index: 9999;
+
+    width: auto;
+    height: 100%;
+}
+
+.banner_list_lg{
+    display: none;
+    transition: all linear 2s 0s;
+}
+
+.banner_list_sm{
+display: flex;
+}
+
+.poster_title{
+text-align: center;
+font-family: 'Nanum Gothic';
+line-height: 3rem;
+font-size: 2rem;
+margin-bottom: 3%;
+}
+
+.wrap_for_underline_poster_title{
+border-bottom: 1px solid black;
+}
+
+.product_view{
+margin-bottom: 20px;
+line-height: 50px;
+vertical-align: middle;
+border-top: 1px solid gray;
+border-bottom: 1px solid gray;
+}    
+
+.product_view{
+    margin: 0 auto;
+    text-align: center;
+    font-size: medium;
+    font-weight: bold;
+    color: black;
+}
+/* ------------------- */
+
+.left_nav{
+display: none;
+}
+
+.notice_product{
+
+}
+
+.notice_product .card{
+    padding: 20px 0;
+}
+
+.notice_product .card .notice_product_title{
+    border-bottom: 1px solid black;
+    margin: auto auto;
+    font-weight: bold;
+    font-size: 30px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+.notice_product .card .notice_product_contents p{
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 1px;
+}
+
+.click_component{
+    font-family: Nanum Gothic;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color:#E2758C;
+    padding-top: 10px;
+}
+
+/* #모바일 "제품 페이지" product 컴포넌트 */
+.product_list{ margin: 0 auto; }
+.product_list .li{ margin: 0 auto; }
+.description{ text-align: center; }
+.product_list > .row:nth-child(2){
+padding: 0 !important;
+margin: 0 !important;
+}
+
+.product_list > .row:nth-child(2) > .row{
+padding: 1em 0 !important;
+margin: 0 !important;
+/* border: 1px solid black; */
+}
+
+
+/* "제품 페이지" product 컴포넌트 */
+.banner_menu > div:nth-child(1){
+display: block;
+}
+
+.banner_menu > div:nth-child(5){
+display: block;
+}
+
+.slider-2-title{
+    margin-top: 120px;
+    margin-bottom: 20px
+}
+
+div.product_view.owl-carousel.owl-theme.owl-loaded.owl-drag > div.owl-nav > button.owl-prev{
+    position: absolute;
+    left: 20px;
+}
+
+div.product_view.owl-carousel.owl-theme.owl-loaded.owl-drag > div.owl-nav > button.owl-next{
+    position: absolute;
+    right: 20px;
+}
+
+.slider-2 .owl-nav .owl-prev{
+    display: none !important;
+}
+
+.slider-2 .owl-nav .owl-next{
+    display: none !important;    
+}
+
+.product_video{
+    width: auto;
+    height: auto;
+}
+
+.our-portfolio .owl-nav {
+    box-sizing: border-box;
+    display: block;
+    top: -60px;
+    right: 34%;
+}
+
+.click_component{
+    display: none;
+}
+
+@media all and (min-width: 768px){
+    .click_component{
+        display: block;
+    }
+
+    .product_click_info .candidate_1{
+        display: block;
+    }
+    .product_click_info .candidate_2{
+        display: none;
+    }
+    
+        .our-portfolio .owl-nav {
+            top: -125px;
+            right: 15%;
+        }
+        /* #테블릿 "제품 페이지" product 컴포넌트 */
+        .product_list .li{
+            margin: 0 auto;
+        }
+    
+        .description{
+            text-align: center;
+        }
+    
+        .product_list > .row:nth-child(2){
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    
+        .product_list > .row:nth-child(2) > .row{
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .banner_menu{
+            flex-flow: row nowrap;
+            overflow: hidden;
+        }
+}
+
+@media all and (max-width: 765px) and (min-width:644px){
+    .home_banner .banner_list:last-child{
+        display: none;
+    }
+}
+
+@media all and (min-width:1023px){
+    /* #랩탑(small) 제품 컴포넌트 */
+    .product_list > .row:nth-child(2) > .row{
+        padding: 1em 0 !important;
+        margin: 0 !important;
+    }
+    .product_list{
+        margin-bottom: 2%;
+    }
+    .product_list > .li > img{
+        object-fit: contain;
+    }
+
+    /* #랩탑 "제품 페이지" 배너 레이아웃 */
+    .banner_list_sm{
+        display: flex;
+    }
+    .card .product_list div.li.row{
+        min-height: 800px !important;
+    }    
+}
+
+@media all and (min-width:1800px){
+    .click_component{
+        padding-top: 0;
+    }
+
+    /* #컴퓨터 "제품 페이지" 제품 레이아웃 */
+    .product_list > .row:nth-child(1){
+        width: 66.66666666666667% !important;
+    }
+
+    .product_list > .row:nth-child(2){
+        width: 33.33333333333333% !important;
+    }
+
+    .product_item{
+        width: 50%;
+        height: 50%;
+        line-height: 50px;
+        vertical-align: middle;
+    }
+
+    /* #컴퓨터 "제품 페이지" 모니터 배너 레이아웃 */
+    .banner_list_sm{
+        display: none;
+    }
+    .banner_list_lg{
+        display: none;
+    }
+
+    /* #테블릿 product 배너  */
+    .banner_menu > div:nth-child(1){
+        display: none;
+    }
+
+    .banner_menu > div:nth-child(5){
+        display: none;
+    }
+    
+    .product_view{
+        display: none !important;
+    }
+
+    .pc_product_view{
+        display: block;
+    }
+
+    .pc_product_view > .row{
+        margin-left: 2px;
+        margin-bottom: 6px;
+    }
+
+    .pr_producct_view > .row > .col-2{
+        padding-right:2px !important;
+        padding-left:2px !important;
+    }
+
+    .product_view .owl-nav{
+        display: none;
+    }
+    .view_right{
+        display: block;
+    }
+
+    .view_right i{
+        font-size: 1rem;
+        color: black;
+    }
+
+    .home_banner_lg .view_right{
+        background-color: white;
+        opacity: 0.8;
+        z-index: 9999;
+    }
+    
+    .view_right .btn{
+        border-radius: 2px;
+        border: 2px solid #636e72;
+    }
+
+    .info_pc{
+        display: inline;
+    }
+
+    .info_mobile{
+        display: none;
+    }
+}

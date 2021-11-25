@@ -1,0 +1,117 @@
+/* 회사소개 페이지 컴포넌트 */
+/* introduce.html */
+/* ##mobile */
+.container_intro{
+    margin-top: 100px;
+}
+
+.intro_company_title{
+    /* border: 1px solid black; */
+    /* background-color: rgb(238, 238, 238); */
+    background-color: #ffffff;
+    background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+
+}
+
+.intro_index_tab{
+    position: relative;
+    background-color: white;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.intro_index_tab .title_wrap{
+    font-size: 10px;
+    padding: 10% 0;
+    text-align: center;
+}
+
+.intro_index_tab .title_wrap img{
+    width: auto;
+    height: auto;
+}
+
+.intro_index_tab .title_wrap a{
+    font-size: 2.25em;
+    font-weight: bold;
+    color: #2d3436;
+    font-family: 'Nanum Gothic';
+    text-shadow: 1px 1px 1px black;
+}
+
+.intro_index_menu .nav{
+    flex-flow: column;
+}
+
+.intro_index_menu_list{
+    position: relative;
+}
+
+.intro_index_menu .content_wrap{
+    /* position: absolute;
+    top: 25%;
+    left: 15%; */
+    border-bottom: 1px solid gray;
+}
+
+.intro_index_menu .intro_index_menu_list:hover{
+    background-color: #ffffff;
+background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+    transition: all ease 2s 2s;
+
+}
+
+.intro_index_menu .content_wrap img{
+    width: auto;
+    height: auto;
+}
+
+.intro_index_menu .content_wrap a{
+    font-size: 1.25rem;
+    /* font-weight: bold; */
+    color: #2d3436;
+    font-family: 'Nanum Gothic';
+    text-shadow: 1px 1px 1px black;
+    line-height: 30px;
+}
+
+.intro_index_menu_list{
+    background-image: url("static/assets/images/mobile_index_tab_menu_1.png");
+}
+
+.intro_index_menu_list:last-child{
+    background-image: url("static/assets/images/mobile_index_tab_menu_2.png");
+}
+
+.intro_company_content{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* ##tablet */
+@media all and (min-width:768px){
+    .intro_company_title{
+        /* border-right: 1px solid black; */
+        /* box-shadow: #636e72 4px; */
+    }
+}
+
+/* ##Laptoop */
+@media all and (min-width:1023px){
+    .container_intro{
+        min-height: 1000px;
+        height: auto;
+    }
+
+    .intro_company_content{
+        height: auto;
+    }
+
+    .intro_company_title{
+        margin: 0 !important;
+        padding: 0 !important;
+        /* border-top: 0px solid black; */
+        /* border-left: 0px solid black; */
+    }
+}

@@ -1,0 +1,29 @@
+@media (max-width: 1200px) {
+  .header-area .main-nav .nav li {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .header-area .main-nav:before {
+    display: none;
+  }
+
+  .header-area .main-nav .logo h4 {
+    font-size: 24px;
+  }
+  .header-area .main-nav .logo h4 img {
+    max-width: 25px;
+    margin-left: 0px;
+  }
+  .header-area .main-nav .nav li:last-child {
+    padding-left: 20px;
+  }
+
+  .nacc .ticks-list span {
+    display: inline-block;
+    opacity: 1;
+    margin-right: 45px;
+    margin-bottom: 20px;
+    line-height: 20px;
+    font-size: 15px;
+  }
+}

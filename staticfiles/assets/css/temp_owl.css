@@ -1,0 +1,94 @@
+/*  폰트 적용 */
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+
+html {
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+body, ul, li, html {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+.block {
+    display: block;
+}
+/* 메인페이지 2 작업 시작 */
+
+.slider-2-title > a {
+    display:block;
+    font-size:20px;
+    font-weight:bold;
+    letter-spacing:5px;
+    line-height:50px;
+    text-align:center;
+}
+.slider-2{
+    margin:0 auto;
+}
+
+.slider-2 > .owl-carousel > .owl-stage-outer > .owl-stage > .owl-item > .item {
+    height: auto;
+}
+
+.slider-2 > .owl-carousel > .owl-stage-outer > .owl-stage > .owl-item:nth-child(even) > .item {
+    background-color: #c0c0c0;
+}
+
+.slider-2 > .owl-carousel > .owl-nav > .owl-prev{
+    position:absolute;
+    top:-40px;
+    lefT: 20px;
+    margin:0;
+    background-color:transparent;
+    width: 10px;
+    height: 10px;
+    /* border-radius: 10px; */
+}
+
+.slider-2 > .owl-carousel > .owl-nav > .owl-next{
+    position:absolute;
+    top:-40px;
+    right: 20px;
+    margin:0;
+    background-color:transparent;
+    width: 10px;
+    height: 10px;
+    /* border-radius: 10px; */
+}
+
+/* .slider-2 > .owl-carousel > .owl-nav > .owl-next {
+    left:auto;
+    right:0;
+} */
+
+.slider-2 > .owl-carousel > .owl-nav > .owl-prev:hover, .slider-2 > .owl-carousel > .owl-nav > .owl-next:hover {
+    background-color:transparent;
+}
+
+.slider-2 > .owl-carousel > .owl-dots {
+    display:none;
+}
+
+.owl-stage-outer .owl-stage .product_view_wrap .owl-item{
+    width: 100%;
+}
+
+/* custom 부분 */
+.slider-2-title{
+    color: black;
+}
+
+.product_view_wrap{
+    cursor: pointer;
+}
+
+.product_view .owl-nav{
+    display: block !important;
+}

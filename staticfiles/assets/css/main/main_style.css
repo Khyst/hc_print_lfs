@@ -1,0 +1,294 @@
+/* 홈페이지의 메인 템플릿에(홈, 헤더, 배너) 적용이 될 스타일요소 */
+/* 적용 되는 HTML 파일 : Base.html, homepage_1.html */
+
+
+/* ##모바일 */
+#contact_title_in_mobile{
+    margin-top: 0.25em;
+    display: block;
+}
+
+.blog-post{
+    margin-bottom: 10px;
+}
+.first-thumb .icon {
+    font-size: 20px;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+#services > div > div > div:nth-child(2) > div > div > div > div:nth-child(1) > div > div.first-thumb i{
+    color: #0984e3;
+}
+
+#services > div > div > div:nth-child(2) > div > div > div > div:nth-child(1) > div > div:nth-child(2) > div > div > i{
+    color: #FF5733;
+}
+
+#services > div > div > div:nth-child(2) > div > div > div > div:nth-child(1) > div > div:nth-child(3) > div > div > i{
+    color: #C70039;
+}
+
+#services > div > div > div:nth-child(2) > div > div > div > div:nth-child(1) > div > div:nth-child(4) > div > div > i{
+    color: #8E44AD;
+}
+
+.menu .thumb .icon{
+    font-size: 1.5rem !important;
+    color: #686868;
+}
+.our_portfolio{
+    padding-top: 0px;
+}
+
+.mobile-main-banner{
+    margin-top: 100px;
+    display: block;
+}
+
+.click_info h4{
+    color: white !important;
+}
+
+.item:hover .click_info h4{
+    color: #55efc4 !important;
+}
+
+.modal_head{
+    float: right;
+}
+
+
+.icon-title{
+    display: none;
+}
+
+.services .icon img{
+    min-width: auto;
+    padding: 3px;
+}
+
+.mobile_auth_view .auth_icon_wrap{
+    margin: auto auto !important;
+}
+
+.mobile_auth_view .mobile_auth_icon_wrap .mobile_auth_icon{
+    color:gray;
+    width:80% !important;
+    height:auto !important;
+}
+#mobile_nav{
+    transition: width linear 1s;
+}
+
+/* #모바일 혜천 문화사 menu_index 상부 클릭하기 배너 */
+.menu_index{
+    display: none;
+}
+
+/* #모바일 로그인 부분 레이아웃 */
+.mobile_auth_view{
+    display: block;
+}
+
+.pc_auth_view{
+    display: none;
+}
+
+/* 메인 프리헤더 로그인, 로그아웃 컴포넌트 관련 css */
+.user_menu li a{ 
+color: gray;
+}
+
+/* 메인 프리헤더 좌측 상단 정보 소개 칸 css */
+.info{
+line-height: 30px;
+vertical-align: middle;
+}
+
+/* 메인 제품소개 컴포넌트 Owl Carousel */
+.owl-carousel .item .thumb{
+height: 343.39px;
+position: relative;
+}
+
+.owl-carousel .item .thumb img{
+height: 343.39px;
+background-size: contain;
+}
+
+/* 헤더 로그인, 로그아웃(Auth) 컴포넌트 */
+.user_menu{
+display: flex;
+flex-flow: row wrap;
+justify-content: space-between;
+line-height: 30px;
+vertical-align: middle;
+}
+
+/* 메인 홈 모달 */
+.c_modal{
+position: absolute;
+width: 400px !important;
+height: 500px !important;
+overflow: hidden;
+
+opacity: 1;
+}
+
+#notice_modal_1{
+left: auto;
+top: 150px !important;
+right: 220px !important;
+}
+
+#notice_modal_2{
+left: auto;
+top: 150px !important;
+right: 620px !important;
+}
+/* ------- */
+
+/* 메인 페이지 블로그 포스트 관련 레이아웃 */
+.post_small{
+width: 260px;
+height: 260px;
+background-size: contain;
+}
+
+.mobile-banner{
+    display: block;
+    margin-top: 100px;
+}
+
+.mobile-banner .wrap{
+    height: auto;
+}
+
+.mobile-banner .wrap img{
+    width: auto;
+    height: auto;
+}
+
+.main-banner{
+    display: none;
+}
+
+.thumb > .icon{
+    width: 100% !important;
+}
+
+.icon-title{
+    display: none;
+}
+
+
+/* ##테블릿 PC */
+@media all and (min-width:768px){
+
+    .icon{
+        font-size: 2.5rem !important;
+    }
+    
+
+    #contact_title_in_mobile{
+        margin-top: 0;
+        display: inline;
+    }
+
+    .mobile-main-banner{
+        display: none;
+    }
+
+    .mobile-banner{
+        display: none;
+    }
+    
+    .main-banner{
+        display: block;
+    }
+
+    
+    .services .icon img{
+        min-width: 60px;
+        padding: 1px;
+    }
+
+    /* #테블릿 클릭하기 배너 */
+    .menu_index{
+        display: none;
+    } 
+
+    /* #테블릿 로그인 레이아웃 */
+    .mobile_auth_view{
+        display: none;
+    }
+
+    .pc_auth_view{
+        display: inline-block;
+    }
+
+    /* user Auth 아이콘 크기 설정 */
+    .mobile_auth_view .mobile_auth_icon_wrap .mobile_auth_icon{
+        color:gray;
+        width:80% !important;
+        height:80% !important;
+    }
+
+    /* .info li:nth-child(2){
+        display: none;
+    } */
+
+    .main-banner{
+        height: 30%;
+    }
+    .services .naccs .menu div .thumb {
+        padding: 5px;
+    }
+}
+
+.form_group > fieldset > label{
+    width: 20% !important;
+}
+
+.form_group > fieldset > input{
+    width: 80% !important;
+}
+
+.thumb > .icon{
+    width: 50%;
+}
+
+.thumb > .icon-title{
+    width: 50%;
+}
+
+/* ##랩탑(소형 노트북) */
+@media all and (min-width:1023px){
+    .icon-title{
+        display: inline-block;
+    }
+
+    .thumb > .icon{
+        width: auto;
+    }
+    
+    .thumb > .icon-title{
+        width: auto;
+    }
+}
+
+/* ##랩탑(중형 노트북) */
+@media all and(min-width:1600px){
+    .menu_list{
+        width: 244px;
+        margin-right: 20px;
+    }
+}
+
+/* ##컴퓨터 모니터 */
+@media all and(min-width:1800px){
+    .thumb > .icon{
+        width: 100%;
+    }
+}

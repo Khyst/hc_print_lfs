@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container container_intro">
+    <div class="row">
+        {% comment %} <div class="col-lg-2 intro_company_title">
+            <div class="">
+              <div class="col-lg-12 col-md-3 col-sm-6 intro_index_tab">
+                <!-- <img src="{% static 'assets/images/mobile_index_tab.png' %}" alt=""> -->
+                <div class="title_wrap">
+                  <a class="" href="#"> 회사 소개 </a>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-9 col-sm-6 intro_index_menu">
+                <nav class="nav">
+                  <div class="intro_index_menu_list">
+                    <!-- <img src="{% static 'assets/images/mobile_index_tab_menu_1.png' %}" alt=""> -->
+                    <div class="content_wrap">
+                      <a class="nav-link ml-3 my-1" href="#item-1">회사정보</a> 
+                    </div> 
+                  </div>
+                  
+                  <div class="intro_index_menu_list"> 
+                    <!-- <img src="{% static 'assets/images/mobile_index_tab_menu_1.png' %}" alt=""> -->
+                    <div class="content_wrap">
+                      <a class="nav-link ml-3 my-1" href="#item-1-1">오시는 길</a> 
+                    </div> 
+                  </div> 
+                  <div class="intro_index_menu_list"> 
+                    <!-- <img src="{% static 'assets/images/mobile_index_tab_menu_1.png' %}" alt=""> -->
+                    <div class="content_wrap">
+                      <a class="nav-link ml-3 my-1" href="#item-3-1">각종 전화번호</a> 
+                    </div> 
+                  </div> 
+                  <div class="intro_index_menu_list"> 
+                    <!-- <img src="{% static 'assets/images/mobile_index_tab_menu_1.png' %}" alt=""> -->
+                    <div class="content_wrap">
+                      <a class="nav-link ml-3 my-1" href="#item-3-2">대표</a> 
+                    </div> 
+                  </div>
+                </nav>
+              </div>
+            </div>
+        </div> {% endcomment %}
+
+        <div class="col-lg-10 intro_company_content">
+          <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+            <img src="{% static 'assets/images/hc_source/intro_1.jpg' %}" alt="">
+            <img src="{% static 'assets/images/hc_source/intro_2.jpg' %}" alt="">
+            <div class="col-12" style="width:100%; height:auto;">
+              <div id="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102835.17833232276!2d127.3124589916382!3d36.346259537207615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35654b97bc1acaa5%3A0xd4b4e6c9a839ccdf!2z7Zic7LKc66y47ZmU7IKs!5e0!3m2!1sen!2skr!4v1635679650595!5m2!1sen!2skr" style="border:0; width:100%; height:auto;" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

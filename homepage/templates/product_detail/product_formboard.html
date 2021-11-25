@@ -1,0 +1,67 @@
+{% extends 'base_product.html' %}
+{% load static %}
+
+{% block product_content %}
+<!-- 폼보드 -->
+<div class="container poster_wrap" id="poster">
+    <div class="row">
+        <h1 class="poster_title">
+        <span class="">
+            &nbsp&nbsp&nbsp&nbsp&nbsp 폼보드 &nbsp&nbsp&nbsp&nbsp&nbsp
+        </span>
+        </h1>
+    </div>
+
+    <div class="row notice_product">
+        <div class="card">
+
+        <span class="notice_product_title"> 폼보드 공지사항 </span> 
+
+        <div class="notice_product_contents container">
+            <p> 혜천문화사는 학회포스터 아침 7시부터 출력 해드립니다 </p>
+        </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        {% for elem in product_formboard %}
+        <div class="col-lg-6 card">
+        <div class="row poster_list product_list card-img-top">
+            <div class="li row">
+            {% if elem.ext == 'mp4' %}
+              <video width="" height="" controls>
+              {% if elem.link_ok == False %}
+                <source src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}.{{elem.ext}}" type="video/mp4" alt="">
+              {% else %}
+                <source src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}_{{elem.id}}.{{elem.ext}}" type="video/mp4" alt="">
+              {% endif %}
+              </video>
+            {% else %}
+              {% if elem.link_ok == False %}
+                <img src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}.{{elem.ext}}" alt="">
+              {% else %}
+                <img src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}_{{elem.id}}.{{elem.ext}}" alt="">
+              {% endif %}
+            {% endif %}
+            </div>
+            <div class="card-body">
+            <div class="card_wrap">
+                <div class="row"> 
+                <div class="description card-title"> 
+                    {{ elem.title }}
+                </div>
+                </div>
+                <div class="row">
+                <div class="description card-text">
+                    <div class="btn btn-default"> <span class="" style="font-weight: bold;"> 포스터 화면 색상 <br> <span style="font-weight: bold; color: red;">원본 그대로</span> 나옵니다  </span>  </div>
+                </div>
+                </div>
+            </div>        
+            </div>
+        </div>
+        </div>
+        {% endfor %}  
+    </div>
+</div>
+{% endblock %}

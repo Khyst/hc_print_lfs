@@ -1,0 +1,59 @@
+/* 고객센터 페이지 컴포넌트 */
+/* customer.html */
+/* ##Mobile */
+.container_customer{
+    margin-top: 100px;
+    max-width: 1280px;
+    min-height: 1000px;
+}
+
+.container_customer .row{
+    margin-top: 30px;
+}
+
+.customer_board_title{
+    border-right: 1px solid black;
+    box-shadow: #636e72 4px 4px;
+}
+
+
+/* 고객센터 페이지 컴포넌트 */
+/* customer.html */
+/* ##mobile */
+
+.container_customer{
+    margin-top: 100px;
+}
+
+/* ##tablet */
+@media all and (min-width:768px){
+    .customer_board_title{
+        border-right: 1px solid black;
+        box-shadow: #636e72 4px;
+    }
+}
+
+/* ##Laptoop */
+@media all and (min-width:1023px){
+    .container_customer{
+        height: auto;
+    }
+
+    .top_brand{
+        margin-top:10px;
+    }
+    
+    .notice_board_table{
+        margin-top: 30px;
+    }
+
+    .faq, .qna{
+        min-height: 1000px;
+    }
+
+    .customer_board_title{
+        margin-top: 10px;
+        border-top: 0px solid black;
+        border-left: 0px solid black;
+    }
+}

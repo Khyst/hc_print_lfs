@@ -1,0 +1,773 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="modal" tabindex="-1" role="dialog" style="display:none;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 슬라이드 쇼 -->
+<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+  <div id="slider" class="">
+    <div id="slide_show_hc" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#slide_show_hc" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#slide_show_hc" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#slide_show_hc" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+              <a href="http://blog.naver.com/hccopy"><img src="{% static 'assets/images/main_visual4.jpg' %}" class="d-block w-100 slide_img" style="background-size : contain;" alt="..."></a> 
+            </div>
+            <div class="carousel-item">
+              <a href="{% url 'product' %}"><img src="{% static 'assets/images/hc_source/index-min3.jpg' %}" class="d-block w-100 slide_img" alt="..."></a> 
+            </div>
+            <div class="carousel-item">
+              <a href="{% url 'product' %}"><img src="{% static 'assets/images/hc_source/index-min1.jpg' %}" class="d-block w-100 slide_img" alt="..."></a> 
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#slide_show_hc" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#slide_show_hc" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+    </div>
+  </div>
+</div>
+
+<div class="mobile-main-banner wow fadeIn carousel slide carousel-fade" id="carouselExampleControls" data-bs-ride="carousel" data-wow-duration="1s" data-wow-delay="0.5s">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <a href="#" onclick="makequery()"> <img src="{% static 'assets/images/main_visual1.jpg' %}" style="height:500px;" class="d-block w-100" alt="사진 1"> </a> 
+    </div>
+    <div class="carousel-item">
+      <a href="{% url 'product' %}"> <img src="{% static 'assets/images/main_visual2.jpg' %}" style="height:500px;" class="d-block w-100" alt="사진 2"> </a> 
+    </div>
+    <div class="carousel-item">
+      <a href="http://blog.naver.com/hccopy"> <img src="{% static 'assets/images/main_visual3.jpg' %}" style="height:500px;" class="d-block w-100" alt="사진 3"> </a> 
+    </div>
+    <div class="carousel-item">
+      <a href="http://m.blog.naver.com/hccopy"> <img src="{% static 'assets/images/main_visual4.jpg' %}" style="height:500px;" class="d-block w-100" alt="사진 3"> </a> 
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div id="portfolio" class="our-portfolio section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="section-heading wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+          <h6>혜천문화사</h6>
+          <h4>제작가능한 &nbsp <em>제품</em></h4>
+          <div class="line-dec"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="loop owl-carousel">
+          <div class="item">
+            <a href="{% url 'product_detail' 'report' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_0.jpg' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>보고서, 제안서</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div>
+          <div class="item">
+            <a href="{% url 'product_detail' 'paper' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_1.jpg' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>논문</h4>
+                <span>스프링, 하드 커버, 특, 일반 제본, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div>
+          <div class="item">
+            <a href="{% url 'product_detail' 'poster' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/product_02.jpg' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>포스터</h4>
+                <span>빠른 제작, 주말도 가능 <br></span> <!-- Tag 형식으로 만들기 -->
+                <span> 최고의 퀄리티, 화면 색상 그대로 </span>
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div>
+          <div class="item">
+            <a href="{% url 'product_detail' 'general_binding' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_3.png' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>제본</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div>
+          <div class="item">
+            <a href="{% url 'product_detail' 'print' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_4.jpg' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>출력 &amp; 복사</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div>
+          <div class="item">
+            <a href="{% url 'product_detail' 'namecard' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_5.jpg' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>명함</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div>
+          {% comment %} <div class="item">
+            <a href="{% url 'product' 'leaflet' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_6.jpg' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>전단지</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div> {% endcomment %}
+          <div class="item">
+            <a href="{% url 'product_detail' 'catalog' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_7.jpg' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>카탈로그</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div>
+          <div class="item">
+            <a href="{% url 'product' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_8.jpg' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>북커버</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div>
+          <div class="item">
+            <a href="{% url 'product_detail' 'report_box' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_9.png' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>보고서 박스</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div>
+          <div class="item">
+            <a href="{% url 'product_detail' 'prize' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_10.jpg' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>상장 / 단증</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div>
+          <div class="item">
+            <a href="{% url 'product_detail' 'sticker' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_11.jpg' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>스티커</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div>
+          {% comment %} <div class="item">
+            <a href="{% url 'product' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_12.png' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>브로슈어</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div> {% endcomment %}
+          <div class="item">
+            <a href="{% url 'product_detail' 'shoppingbag' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_13.png' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>쇼핑백</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div>
+          {% comment %} 
+          <div class="item">
+            <a href="{% url 'product' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_12.png' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>캘린더</h4>
+                <span>빠른 제작, 주말도 가능</span> <!-- Tag 형식으로 만들기 -->
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div> {% endcomment %}
+          {% comment %} 
+          <div class="item">
+            <a href="{% url 'product' %}">
+              <div class="portfolio-item">
+              <div class="thumb">
+                <img src="{% static 'assets/images/hc_source/from_hccopy/product_14.jpg' %}" alt="">
+              </div>
+              <div class="down-content">
+                <h4>책자</h4>
+                <span>세미나, 홍보용, 가이드북</span>
+              </div>
+              <div class="down-content bg-success click_info">
+                <h4> 클릭하면 페이지로 넘어갑니다 </h4>
+              </div>
+            </div>
+            </a>  
+          </div> {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 다른 페이지 -->
+<div id="services" class="services section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+          <h6>혜천문화사</h6>
+          <h4>대표 <em>제작품</em></h4>
+          <div class="line-dec"></div>
+          <p style="color: black; font-weight: bold;"> 아래 메뉴를 클릭해보세요! </p> 
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="naccs">
+          <div class="grid">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="menu">
+                  <div class="first-thumb active">
+                    <div class="thumb">                 
+                      <div class="icon"><i class="fas fa-clipboard"></i></div> 
+                      <span class="icon-title">보고서 &amp; 제안서</span> 
+                      <!-- <span class="icon"><img src="{% static 'assets/images/hc_source/from_hccopy/sns_logo_2.png' %} " alt=""></span> -->
+                    </div>
+                  </div>
+                  <div class="first-thumb">
+                    <div class="thumb">                 
+                      <div class="icon"><i class="fas fa-quidditch"></i></div> 
+                      <span class="icon-title"> 포스터 </span> 
+                      <!-- <span class="icon"><img src="{% static 'assets/images/hc_source/from_hccopy/sns_logo_3.png' %} " alt=""></span> -->
+                    </div>
+                  </div>
+                  <div class="first-thumb">
+                    <div class="thumb">
+                      <div class="icon"><i class="fas fa-graduation-cap"></i></div>  
+                      <span class="icon-title">학위 논문</span> 
+                      <!-- <span class="icon"><img src="{% static 'assets/images/hc_source/from_hccopy/sns_logo_1.png' %} " alt=""></span> -->
+                    </div>
+                  </div>
+                  <div class="first-thumb">
+                    <div class="thumb">                 
+                      <div class="icon"><i class="fas fa-book"></i></div> 
+                      <span class="icon-title">각종 바인딩, 제본</span> 
+                      <!-- <span class="icon"><img src="{% static 'assets/images/hc_source/from_hccopy/sns_logo_4.png' %} " alt=""></span> -->
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="col-lg-12">
+                <ul class="nacc">
+                  <!-- 보고서, 제안서 -->
+                  <li class="active">
+                    <div>
+                      <div class="thumb">
+                        <div class="row">
+                          <div class="col-lg-6 align-self-center">
+                            <div class="left-text">
+                              <h4> 보고서 &amp; 제안서 </h4>
+                              <hr>
+                              <div class="ticks-list">
+                                <div class="ticks-text-wrap">
+                                  <span class="text-danger"><i class="fa fa-check"></i> 24시간 비상 가능  </span> 
+                                </div> 
+                                <div class="ticks-text-wrap">
+                                  <span><i class="fa fa-check"></i> 충남대, 카이스트, 정부청사, 유성구청 근처 </span> 
+                                </div> 
+                                <div class="ticks-text-wrap">
+                                  <span><i class="fa fa-check"></i> 잠깐 작업할 땐 큰 도로변에 주차, 뒤에 주차장있어서 주차가 용이 </span>
+                                </div>
+                                <div class="ticks-text-wrap">
+                                  <span><i class="fa fa-check"></i> 고속도로 근처이며, 교통편, 접근성 우수 </span>
+                                </div> 
+                              </div>
+                              <img src="{% static 'assets/images/hc_source/portfolio_info.jpg' %}" alt="">
+                            </div>
+                          </div>
+                          <div class="col-lg-6 align-self-center">
+                            <div class="right-image">
+                              <img src="{% static 'assets/images/product_source/report/report_6.jpg' %}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <img src="{% static 'assets/images/hc_source/portfolio_' %}" alt="">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <!-- 포스터 -->
+                  <li>
+                    <div>
+                      <div class="thumb">
+                        <div class="row">
+                          <div class="col-lg-6 align-self-center">
+                            <div class="left-text">
+                              <h4> 포스터 &amp; 학회포스터 </h4>
+                              <hr>
+                              <div class="ticks-list">
+                                <div class="ticks-text-wrap">
+                                  <span class="text-danger"><i class="fa fa-check"></i> 24시간 비상 가능  </span> 
+                                </div> 
+                                <div class="ticks-text-wrap">
+                                  <span><i class="fa fa-check"></i> 충남대, 카이스트, 정부청사, 유성구청 근처 </span> 
+                                </div> 
+                                <div class="ticks-text-wrap">
+                                  <span><i class="fa fa-check"></i> 잠깐 작업할 땐 큰 도로변에 주차, 뒤에 주차장있어서 주차가 용이 </span>
+                                </div>
+                                <div class="ticks-text-wrap">
+                                  <span><i class="fa fa-check"></i> 고속도로 근처이며, 교통편, 접근성 우수 </span>
+                                </div> 
+                              </div>
+                              <img src="{% static 'assets/images/hc_source/portfolio_info.jpg' %}" alt="">
+                            </div>
+                          </div>
+                          <div class="col-lg-6 align-self-center">
+                            <div class="right-image">
+                              <img src="{% static 'assets/images/product_source/poster/poster_6.jpg'%}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <img src="{% static 'assets/images/hc_source/portfolio_info.jpg' %}" alt="">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <!-- 학위 논문 -->
+                  <li>
+                    <div>
+                      <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4> 대학교 학위 논문 </h4>
+                                <hr>
+                                <div class="ticks-list">
+                                  <div class="ticks-text-wrap">
+                                    <span><i class="fa fa-check"></i> 논문 당일 가능 </span>
+                                  </div> 
+                                  <div class="ticks-text-wrap">
+                                    <span><i class="fa fa-check"></i> 충남대, 카이스트, 정부청사, 유성구청 근처 </span> 
+                                  </div> 
+                                  <div class="ticks-text-wrap">
+                                    <span><i class="fa fa-check"></i> 잠깐 작업할 땐 큰 도로변에 주차, 뒤에 주차장있어서 주차가 용이 </span>
+                                  </div>
+                                  <div class="ticks-text-wrap">
+                                    <span><i class="fa fa-check"></i> 고속도로 근처이며, 교통편, 접근성 우수 </span>
+                                  </div> 
+                                </div>
+                              </div>
+                              <img src="{% static 'assets/images/hc_source/portfolio_info.jpg' %}" alt="">
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="{% static 'assets/images/product_source/paper/paper_19.jpg' %}" alt="">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <img src="{% static 'assets/images/hc_source/portfolio_' %}" alt="">
+                          </div>
+                        </div>
+                    </div>
+                  </li>
+
+
+                  <!-- 각종 제본 및 바인딩 -->
+                  <li>
+                    <div>
+                      <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4> 각종 제본 및 바인딩 </h4>
+                                <hr>
+                                <div class="ticks-list">
+                                  <div class="ticks-text-wrap">
+                                    <span><i class="fa fa-check"></i> 충남대, 카이스트, 정부청사, 유성구청 근처 </span> 
+                                  </div> 
+                                  <div class="ticks-text-wrap">
+                                    <span><i class="fa fa-check"></i> 잠깐 작업할 땐 큰 도로변에 주차, 뒤에 주차장있어서 주차가 용이 </span>
+                                  </div>
+                                  <div class="ticks-text-wrap">
+                                    <span><i class="fa fa-check"></i> 고속도로 근처이며, 교통편, 접근성 우수 </span>
+                                  </div> 
+                                </div>
+                              </div>
+                              <img src="{% static 'assets/images/hc_source/portfolio_info.jpg' %}" alt="">
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="{% static 'assets/images/product_source/spring_binding/spring_binding_6.jpg'%}" alt="">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <img src="{% static 'assets/images/hc_source/portfolio_' %}" alt="">
+                          </div>
+                        </div>
+                    </div>
+                  </li>
+
+                  <!--<li>
+                    <div>
+                      <div class="thumb">
+                        <div class="row">
+                          <div class="col-lg-6 align-self-center">
+                            <div class="left-text">
+                              <h4>Enjoy &amp; Travel</h4>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedr do eiusmod deis tempor incididunt ut labore et dolore kengan darwin doerski token.
+                                dover lipsum lorem and the others.</p>
+                              <div class="ticks-list"><span><i class="fa fa-check"></i> Optimized Template</span> <span><i class="fa fa-check"></i> Data Info</span> <span><i class="fa fa-check"></i> SEO Analysis</span>
+                                <span><i class="fa fa-check"></i> Data Info</span> <span><i class="fa fa-check"></i> SEO Analysis</span> <span><i class="fa fa-check"></i> Optimized Template</span></div>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedr do eiusmod deis tempor incididunt.</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 align-self-center">
+                            <div class="right-image">
+                              <img src="{% static 'assets/images/services-image.jpg' %}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>-->
+                </ul>
+              </div>          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- blog_post가 큰 박스, post_item이 작은 박스 -->
+<div id="blog" class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 offset-lg-4  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
+        <div class="section-heading">
+          <h6>최근 포스트</h6>
+          <h4>혜천 문화사의 </h4> <h4> 최근 <em>포스트</em></h4>
+          <div class="line-dec"></div>
+        </div>
+      </div>
+      <div class="col-lg-6 show-up wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+        <div class="blog-post">
+          <div class="thumb">
+            <a href="https://blog.naver.com/hccopy/222502241194"><img src="{% static 'assets/images/hc_source/from_hccopy/post_1.png' %}" alt=""></a>
+          </div>
+          <div class="down-content">
+            <span class="category">네이버 블로그</span>
+            <span class="date">03 August 2021</span>
+            <a href="https://blog.naver.com/hccopy/222502241194">
+              <h4>A+ 학위 논문을 위한 논문 검색 사이트 모음!</h4></a>
+            <p>안녕하세요.오늘은 학위 논문을 쓰기위한 논문 검색 사이트를 안내드리려 합니다. 하나씩 보시죠!....</p>
+            <div class="border-first-button"><a href="https://blog.naver.com/hccopy/222502241194">자세히 보기</a></div>
+          </div>
+        </div>
+      </div>
+      <!-- 블로그 포스트 좌측 칸 여기 까지 -->
+
+      <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+        <div class="blog-posts">
+          <div class="row">
+            <div class="col-lg-12 blog-post">
+              <div class="post-item">
+                <div class="container">
+                  <div class="thumb">
+                  <!--<a href="https://blog.naver.com/PostView.naver?blogId=hccopy&logNo=222483411304&categoryNo=51&parentCategoryNo=&from=thumbnailList"><img class="post_small" src="{% static 'assets/images/hc_source/from_hccopy/post_2.png' %}" alt=""></a>-->
+                </div>
+                <div class="right-content">
+                  <span class="category">네이버 블로그</span>
+                  <span class="date">25 October 2021</span>
+                  <a href="https://blog.naver.com/PostView.naver?blogId=hccopy&logNo=222483411304&categoryNo=51&parentCategoryNo=&from=thumbnailList"><h4>대전컬러출력은? 인쇄는?</h4></a>
+                  <p>안녕하세요! 대전컬러출력을 도와드릴 오늘의 혜천문화사입니다!! 최근에 요리를하는데... </p>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 blog-post">
+              <div class="post-item">
+                <div class="container">
+                  <div class="thumb">
+                  <!--<a href="https://blog.daum.net/hccopy/category/?page=2"><img class="post_small" src="{% static 'assets/images/hc_source/from_hccopy/post_3.png' %}" alt=""></a>-->
+                </div>
+                <div class="right-content">
+                  <span class="category">다음 블로그</span>
+                  <span class="date">7 September 2021</span>
+                  <a href="https://blog.daum.net/hccopy/category/?page=2"><h4>포맥스와 폼보드,우드락을 이용한 전시회 작업 (대전 혜천 문화사) | 혜천문화사</h4> </a>
+                  <p> 1. 포맥스, 폼보드, 우드락?  많은 분들이 3가지를 혼동해서 사용하시거나...</p>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 blog-post">
+              <div class="post-item last-post-item">
+                <div class="container">
+                  <div class="thumb">
+                  <!--<a href="https://blog.naver.com/PostView.naver?blogId=hccopy&logNo=221410652869&categoryNo=14&parentCategoryNo=12&viewDate=&currentPage=&postListTopCurrentPage=&isAfterWrite=true"><img class="post_small" src="{% static 'assets/images/hc_source/from_hccopy/post_4.png' %}" alt=""></a>-->
+                </div>
+                <div class="right-content">
+                  <span class="category">네이버 블로그</span>
+                  <span class="date">24 September 2021</span>
+                  <a href="https://blog.naver.com/PostView.naver?blogId=hccopy&logNo=221410652869&categoryNo=14&parentCategoryNo=12&viewDate=&currentPage=&postListTopCurrentPage=&isAfterWrite=true"><h4> [논문양식] 충남대학교 석·박사 논문양식</h4></a>
+                  <p>1. 학위논문 제출 학위청구논문제출자는 각 심사위원으로부터 최종심사에 합격한 경우에는 ...</p>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 블로그 포스트 우측 칸 여기 까지 -->
+    </div>
+  </div>
+</div>  
+
+{% comment %} <div id="contact" class="contact-us section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="section-heading wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+          <h6>문의하기</h6>
+          <h4>혜천 문화사에 <span id="contact_title_in_mobile"> <em>문의하기</em> </span> </h4> 
+          <div class="line-dec"></div>
+        </div>
+      </div>
+      <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+        <form id="contact" action="" method="post">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="contact-dec">
+                <img src="{% static 'assets/images/contact-dec.png' %}" alt="">
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div id="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102835.17833232276!2d127.3124589916382!3d36.346259537207615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35654b97bc1acaa5%3A0xd4b4e6c9a839ccdf!2z7Zic7LKc66y47ZmU7IKs!5e0!3m2!1sen!2skr!4v1635679650595!5m2!1sen!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="fill-form">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="info-post">
+                      <div class="icon">
+                        <img src="{% static 'assets/images/phone-icon.png' %}" alt="">
+                        <a href="#">010-5406-7416</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="info-post">
+                      <div class="icon">
+                        <img src="{% static 'assets/images/email-icon.png' %}" alt="">
+                        <a href="#">hccopy@naver.com</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="info-post">
+                      <div class="icon">
+                        <img src="{% static 'assets/images/location-icon.png' %}" alt="">
+                        <a href="#">대전광역시 유성구 궁동 대학로 171</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="name" name="name" id="name" placeholder="이름" autocomplete="on" required>
+                    </fieldset>
+                    <fieldset>
+                      <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="이메일" required="">
+                    </fieldset>
+                    <fieldset>
+                      <input type="subject" name="subject" id="subject" placeholder="제목" autocomplete="on">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <textarea name="message" type="text" class="form-control" id="message" placeholder="내용" required=""></textarea>  
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="main-button ">전송하기</button>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+
+{% endblock %}

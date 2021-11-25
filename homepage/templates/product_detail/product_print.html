@@ -1,0 +1,55 @@
+{% extends 'base_product.html' %}
+{% load static %}
+
+{% block product_content %}
+<!-- 각종 출력 -->
+  <div class="container poster_wrap" id="print">
+    <div class="row">
+      <h1 class="poster_title">
+        <span class="">
+          &nbsp&nbsp&nbsp&nbsp&nbsp 각종 출력 &nbsp&nbsp&nbsp&nbsp&nbsp
+        </span>
+      </h1>
+    </div>
+    
+    <div class="row">
+      {% for elem in product_print %}
+      <div class="col-lg-6 card">
+        <div class="row print_list product_list card-image-top">
+          <div class="li row">
+            {% if elem.ext == 'mp4' %}
+              <video width="" height="" controls>
+              {% if elem.link_ok == False %}
+                <source src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}.{{elem.ext}}" type="video/mp4" alt="">
+              {% else %}
+                <source src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}_{{elem.id}}.{{elem.ext}}" type="video/mp4" alt="">
+              {% endif %}
+              </video>
+            {% else %}
+              {% if elem.link_ok == False %}
+                <img src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}.{{elem.ext}}" alt="">
+              {% else %}
+                <img src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}_{{elem.id}}.{{elem.ext}}" alt="">
+              {% endif %}
+            {% endif %}
+          </div>
+          <div class="card-body">
+            <div class="card_wrap">
+              <div class="row"> 
+                <div class="description card-title"> 
+                  {{ elem.title }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="description card-text"> 
+                  {{ elem.desc }}
+                </div>
+              </div>
+            </div>        
+          </div>
+        </div>
+      </div>
+      {% endfor %}  
+    </div>
+  </div>
+{% endblock %}
