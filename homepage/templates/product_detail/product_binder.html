@@ -17,19 +17,19 @@
       <div class="col-lg-6 card">
         <div class="row print_list product_list card-image-top">
           <div class="li row">
-            {% if elem.ext == 'mp4' %}
+            {% if elem.video_ok == True %}
               <video width="" height="" controls>
               {% if elem.link_ok == False %}
                 <source src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}.{{elem.ext}}" type="video/mp4" alt="">
               {% else %}
-                <source src="{% get_media_prefix %}{{elem.img}}" type="video/mp4" alt="">
+                <source src="{% get_media_prefix %}{{elem.src}}" type="video/mp4" alt="">
               {% endif %}
               </video>
             {% else %}
               {% if elem.link_ok == False %}
                 <img src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}.{{elem.ext}}" alt="">
               {% else %}
-                <img src="{% get_media_prefix %}{{elem.img}}" alt="">
+                <img src="{% get_media_prefix %}{{elem.src}}" alt="">
               {% endif %}
             {% endif %}
           </div>

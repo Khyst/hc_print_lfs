@@ -1,6 +1,7 @@
 from django.db import models
 import os
 from uuid import uuid4
+import datetime
 
 class product_list(models.Model):
     pass
@@ -13,6 +14,7 @@ class product_report(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -20,9 +22,13 @@ class product_report(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="(페이지에 들어갈 이미지에 대한 제목)")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="(페이지에 들어갈 이미지에 대한 자세한 설명)")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/report/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
+
     def __str__(self):
         return '보고서/제안서_' + str(self.pk)
 
@@ -37,6 +43,7 @@ class product_poster(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -44,9 +51,12 @@ class product_poster(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/poster/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '포스터/학회포스터_' + str(self.pk)
@@ -62,6 +72,7 @@ class product_form_board(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -69,9 +80,12 @@ class product_form_board(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/formboard/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '폼보드_' + str(self.pk)
@@ -87,6 +101,7 @@ class product_paper(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -94,9 +109,12 @@ class product_paper(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크", editable=False)
+    
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/paper/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '논문_' + str(self.pk)
@@ -112,6 +130,7 @@ class product_hard(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -119,9 +138,12 @@ class product_hard(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/hard_binding/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
     def __str__(self):
         return '하드커버 제본_' + str(self.pk)
 
@@ -136,6 +158,7 @@ class product_drawing(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -143,9 +166,12 @@ class product_drawing(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/drawing_binding/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '도면(반책) 제본_' + str(self.pk)
@@ -161,6 +187,7 @@ class product_spring(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -168,9 +195,12 @@ class product_spring(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/spring_binding/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '스프링 제본_' + str(self.pk)
@@ -186,6 +216,7 @@ class product_binder(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -193,9 +224,12 @@ class product_binder(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/binder/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '바인더_' + str(self.pk)
@@ -211,6 +245,7 @@ class product_index(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -218,9 +253,12 @@ class product_index(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/index/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '인덱스(색인)_' + str(self.pk)
@@ -236,6 +274,7 @@ class product_catalog(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -243,9 +282,12 @@ class product_catalog(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/catalog/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '카탈로그_' + str(self.pk)
@@ -261,6 +303,7 @@ class product_invite(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -268,9 +311,12 @@ class product_invite(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/invite/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '청첩장 / 초대장_' + str(self.pk)
@@ -286,6 +332,7 @@ class product_prize(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -293,9 +340,12 @@ class product_prize(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/prize/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '상장 / 단증 / 자격증_' + str(self.pk)
@@ -311,6 +361,7 @@ class product_report_box(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -318,9 +369,12 @@ class product_report_box(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/report_box/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '제안서 박스_' + str(self.pk)
@@ -336,6 +390,7 @@ class product_print(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -343,9 +398,12 @@ class product_print(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/print/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '출력_' + str(self.pk)
@@ -361,6 +419,7 @@ class product_bindding(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -368,9 +427,12 @@ class product_bindding(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/binding/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '제본(현재 사용 x)_' + str(self.pk)
@@ -386,6 +448,7 @@ class product_etc(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -393,9 +456,12 @@ class product_etc(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/etc/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '기타(현재 사용 X)_' + str(self.pk)
@@ -411,6 +477,7 @@ class product_memorial(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -418,9 +485,12 @@ class product_memorial(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/memorial/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '기념품_' + str(self.pk)
@@ -436,6 +506,7 @@ class product_post_it(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -443,9 +514,12 @@ class product_post_it(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/postit/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '포스트 잇_' + str(self.pk)
@@ -461,6 +535,7 @@ class product_creature_of_prize(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -468,9 +543,12 @@ class product_creature_of_prize(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/creature_of_prize/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '상패_' + str(self.pk)
@@ -486,6 +564,7 @@ class product_namecard(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -493,9 +572,12 @@ class product_namecard(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/namecard/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '명함_' + str(self.pk)
@@ -511,6 +593,7 @@ class product_envelope(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -518,9 +601,12 @@ class product_envelope(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/envelope/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '봉투`_' + str(self.pk)
@@ -536,6 +622,7 @@ class product_sticker(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -543,9 +630,12 @@ class product_sticker(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/sticker/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '스티커_' + str(self.pk)
@@ -561,6 +651,7 @@ class product_shoppingbag(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -568,9 +659,12 @@ class product_shoppingbag(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/shoppingbag/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '쇼핑백_' + str(self.pk)
@@ -586,6 +680,7 @@ class product_exhibit(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -593,9 +688,12 @@ class product_exhibit(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/exhibit/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '전시회 백월 포스터_' + str(self.pk)
@@ -611,6 +709,7 @@ class product_nametag(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -618,9 +717,12 @@ class product_nametag(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/nametag/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
     def __str__(self):
         return '명찰_' + str(self.pk)
 
@@ -635,6 +737,7 @@ class product_bigcoating(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -642,9 +745,12 @@ class product_bigcoating(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/bigcoating/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '대형코팅_' + str(self.pk)
@@ -667,9 +773,12 @@ class product_general_binding(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/general_binding/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '보고서 책자 및 교본_' + str(self.pk)
@@ -685,6 +794,7 @@ class product_photo(models.Model):
         if self:
             ext = filename.split('.')[-1]
             filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
             
         return os.path.join(upload_to, filename)
         
@@ -692,9 +802,12 @@ class product_photo(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=False, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크")
-    img = models.ImageField(blank=True, upload_to=auto_naming)
+    link_ok = models.BooleanField(default=True, editable=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/photo")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
         return '상업용 사진' + str(self.pk)

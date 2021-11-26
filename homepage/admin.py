@@ -3,7 +3,7 @@ from .models import product_bigcoating, product_exhibit, product_nametag, produc
 # from .models import product_list
 
 class customAdmin(admin.ModelAdmin):
-    list_display = ['name', 'ext', 'title', 'desc', 'img', 'prefix']
+    list_display = ['name', 'ext', 'title', 'desc', 'src', 'prefix']
     list_display_links = ['name', 'title']
     search_fields = ['title', 'desc', 'name', 'ext']
 
