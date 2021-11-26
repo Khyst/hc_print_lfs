@@ -9,7 +9,7 @@ from .models import product_prize, product_report_box, product_spring, product_f
 from .models import product_envelope, product_namecard, product_sticker, product_nametag, product_exhibit
 from .models import product_bindding, product_photo, product_general_binding
 
-from .models import product_list
+# from .models import product_list
 import os.path
 # from django.views import views
 
@@ -77,6 +77,8 @@ def product(request):
         "product_nametag" : product_nametag.objects.all(),
         "product_exhibit" : product_exhibit.objects.all(),
         "product_bigcoating" : product_bigcoating.objects.all(),
+        "product_general_binding" : product_general_binding.objects.all(),
+        "product_photo" : product_photo.objects.all(),
         }
         
     return render(request, 'base_product.html', context)

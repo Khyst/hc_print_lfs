@@ -105,9 +105,13 @@
   });
 
 	// Page loading animation
-	 $(window).on('load', function() {
-        $('#js-preloader').addClass('loaded');
-    });
+	$(window).on('load', function() {
+    $('#js-preloader').addClass('loaded');
+  });
+
+  setTimeout(function() {
+    $('#js-preloader h3').removeClass('d-none');
+  }, 2000);
 
 	// Window Resize Mobile Menu Fix
   function mobileNav() {

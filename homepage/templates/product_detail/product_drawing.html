@@ -22,14 +22,14 @@
                 {% if elem.link_ok == False %}
                   <source src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}.{{elem.ext}}" type="video/mp4" alt="">
                 {% else %}
-                  <source src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}_{{elem.id}}.{{elem.ext}}" type="video/mp4" alt="">
+                  <source src="{% get_media_prefix %}{{elem.img}}" type="video/mp4" alt="">
                 {% endif %}
               </video>
             {% else %}
               {% if elem.link_ok == False %}
                 <img src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}.{{elem.ext}}" alt="">
               {% else %}
-                <img src="{% get_media_prefix %}{{elem.prefix}}{{elem.name}}_{{elem.id}}.{{elem.ext}}" alt="">
+                <img src="{% get_media_prefix %}{{elem.img}}" alt="">
               {% endif %}
             {% endif %}
           </div>

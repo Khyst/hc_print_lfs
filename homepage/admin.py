@@ -1,32 +1,38 @@
 from django.contrib import admin
 from .models import product_bigcoating, product_exhibit, product_nametag, product_print, product_poster, product_paper, product_report, product_etc, product_bindding, product_binder, product_catalog, product_creature_of_prize, product_drawing, product_hard, product_index, product_invite, product_memorial, product_post_it, product_prize, product_report_box, product_spring, product_form_board, product_shoppingbag, product_envelope, product_namecard, product_sticker
-from .models import product_list
+# from .models import product_list
+
+class customAdmin(admin.ModelAdmin):
+    list_display = ['name', 'ext', 'title', 'desc', 'img', 'prefix']
+    list_display_links = ['name', 'title']
+    search_fields = ['title', 'desc', 'name', 'ext']
+
 
 # Register your models here.
-admin.site.register(product_print),
-admin.site.register(product_poster),
-admin.site.register(product_paper),
-admin.site.register(product_report),
-admin.site.register(product_etc),
-admin.site.register(product_bindding),
-admin.site.register(product_binder),
-admin.site.register(product_catalog),
-admin.site.register(product_creature_of_prize),
-admin.site.register(product_drawing),
-admin.site.register(product_hard),
-admin.site.register(product_index),
-admin.site.register(product_invite),
-admin.site.register(product_memorial),
-admin.site.register(product_post_it),
-admin.site.register(product_prize),
-admin.site.register(product_report_box),
-admin.site.register(product_spring),
-admin.site.register(product_form_board),
-admin.site.register(product_shoppingbag), 
-admin.site.register(product_envelope), 
-admin.site.register(product_namecard), 
-admin.site.register(product_sticker),
-admin.site.register(product_nametag),
-admin.site.register(product_bigcoating),
-admin.site.register(product_exhibit),
-admin.site.register(product_list),
+admin.site.register(product_print, customAdmin),
+admin.site.register(product_poster, customAdmin),
+admin.site.register(product_paper, customAdmin),
+admin.site.register(product_report, customAdmin),
+admin.site.register(product_etc, customAdmin),
+admin.site.register(product_bindding, customAdmin),
+admin.site.register(product_binder, customAdmin),
+admin.site.register(product_catalog, customAdmin),
+admin.site.register(product_creature_of_prize, customAdmin),
+admin.site.register(product_drawing, customAdmin),
+admin.site.register(product_hard, customAdmin),
+admin.site.register(product_index, customAdmin),
+admin.site.register(product_invite, customAdmin),
+admin.site.register(product_memorial, customAdmin),
+admin.site.register(product_post_it, customAdmin),
+admin.site.register(product_prize, customAdmin),
+admin.site.register(product_report_box, customAdmin),
+admin.site.register(product_spring, customAdmin),
+admin.site.register(product_form_board, customAdmin),
+admin.site.register(product_shoppingbag), customAdmin, 
+admin.site.register(product_envelope), customAdmin, 
+admin.site.register(product_namecard), customAdmin, 
+admin.site.register(product_sticker, customAdmin),
+admin.site.register(product_nametag, customAdmin),
+admin.site.register(product_bigcoating, customAdmin),
+admin.site.register(product_exhibit, customAdmin),
+# admin.site.register(product_list),
