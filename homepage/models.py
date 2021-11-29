@@ -3,8 +3,45 @@ import os
 from uuid import uuid4
 import datetime
 
+dict_product = {
+        "hospital" : "각종 병원 양식",
+        "album" : "앨범",
+        "printout" : "각종 인쇄",
+        "bici" : "BI & CI 간판 디자인",
+        "big_coating" : "대형 코팅",
+        "photo" : "상업용 사진",
+        "exhibit" : "전시회 백월 포스터",
+        "sticker" : "스티커",
+        "namecard" : "명함",
+        "envelope" : "봉투",
+        "shoppingbag" : "쇼핑백",
+        "postit" : "포스트잇",
+        "memorial" : "기념품",
+        "creature_of_prize" : "상패 디자인",
+        "invite" : "청첩장 & 초대장",
+        "prize" : "상장 & 단증",
+        "print" : "각종 출력",
+        "catalog" : "카탈로그",
+        "binder" : "바인더",
+        "spring" : "스프링",
+        "hard" : "하드커버제본",
+        "spring" : "스프링제본",
+        "formboard" : "폼보드",
+        "report" : "보고서 & 제안서",
+        "poster" : "포스터 & 학회포스터",
+        "paper" : "논문",
+        "rock" : "석부작 작품",
+        "wedding" : "웨딩사진 출력",
+        "profile" : "혜천문화사 프로필",
+}
+
 class product_list(models.Model):
-    pass
+    list_name = models.CharField(max_length=20, default="")
+    def __str__(self):
+        try:
+            return str(dict_product[self.list_name])
+        except:
+            return str(self.list_name)
 
 # 제안서
 class product_report(models.Model):
@@ -30,7 +67,10 @@ class product_report(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '보고서/제안서_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "보고서/제안서"
@@ -59,7 +99,10 @@ class product_poster(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '포스터/학회포스터_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "포스터/학회포스터"
@@ -88,7 +131,10 @@ class product_form_board(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '폼보드_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "폼보드"
@@ -117,7 +163,10 @@ class product_paper(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '논문_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "논문"
@@ -145,7 +194,10 @@ class product_hard(models.Model):
     create_at = models.DateTimeField(auto_now_add=True, blank=True)
     update_at = models.DateTimeField(auto_now=True, blank=True)
     def __str__(self):
-        return '하드커버 제본_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "하드커버 제본"
@@ -174,7 +226,10 @@ class product_drawing(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '도면(반책) 제본_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "도면(반책) 제본"
@@ -203,7 +258,10 @@ class product_spring(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '스프링 제본_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "스프링 제본"
@@ -232,7 +290,10 @@ class product_binder(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '바인더_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "바인더"
@@ -261,7 +322,10 @@ class product_index(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '인덱스(색인)_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "인덱스(색인)"
@@ -290,7 +354,10 @@ class product_catalog(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '카탈로그_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "카탈로그"
@@ -319,7 +386,10 @@ class product_invite(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '청첩장 / 초대장_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "초대장"
@@ -348,7 +418,10 @@ class product_prize(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '상장 / 단증 / 자격증_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "상장 / 단증 / 자격증"
@@ -377,7 +450,10 @@ class product_report_box(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '제안서 박스_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "제안서 박스"
@@ -406,7 +482,10 @@ class product_print(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '출력_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "출력"
@@ -435,7 +514,10 @@ class product_bindding(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '제본(현재 사용 x)_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "제본(현재 사용 x)"
@@ -464,7 +546,10 @@ class product_etc(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '기타(현재 사용 X)_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "기타(현재 사용 X)"
@@ -493,7 +578,10 @@ class product_memorial(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '기념품_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "기념품"
@@ -522,7 +610,10 @@ class product_post_it(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '포스트 잇_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "포스트 잇"
@@ -551,7 +642,10 @@ class product_creature_of_prize(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '상패_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "상패"
@@ -580,7 +674,10 @@ class product_namecard(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '명함_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "명함"
@@ -609,7 +706,10 @@ class product_envelope(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '봉투`_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "봉투"
@@ -638,7 +738,10 @@ class product_sticker(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '스티커_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "스티커"
@@ -667,7 +770,10 @@ class product_shoppingbag(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '쇼핑백_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "쇼핑백"
@@ -696,7 +802,10 @@ class product_exhibit(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '전시회 백월 포스터_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "전시회 백월 포스터"
@@ -724,7 +833,10 @@ class product_nametag(models.Model):
     create_at = models.DateTimeField(auto_now_add=True, blank=True)
     update_at = models.DateTimeField(auto_now=True, blank=True)
     def __str__(self):
-        return '명찰_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "명찰"
@@ -753,7 +865,10 @@ class product_bigcoating(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '대형코팅_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "대형코팅"
@@ -781,7 +896,10 @@ class product_general_binding(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '보고서 책자 및 교본_' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "보고서 책자 및 교본"
@@ -810,7 +928,234 @@ class product_photo(models.Model):
     update_at = models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return '상업용 사진' + str(self.pk)
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
 
     class Meta:
         verbose_name_plural = "상업용 사진"
+
+# BI & CI
+class product_bici(models.Model):
+    def auto_naming(self, filename):
+        upload_to = f'{self.prefix}'
+        uuid_name = uuid4().hex
+        if self:
+            ext = filename.split('.')[-1]
+            filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
+            
+        return os.path.join(upload_to, filename)
+        
+    name = models.CharField(max_length=20, default="bici", blank=True, help_text="자동 지정(입력 X)", editable=False)
+    ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
+    desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
+    link_ok = models.BooleanField(default=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
+    prefix = models.CharField(max_length=50, default="product_source/bici")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
+
+    class Meta:
+        verbose_name_plural = "BI & CI"
+
+# 각종 인쇄
+class product_printout(models.Model):
+    def auto_naming(self, filename):
+        upload_to = f'{self.prefix}'
+        uuid_name = uuid4().hex
+        if self:
+            ext = filename.split('.')[-1]
+            filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
+            
+        return os.path.join(upload_to, filename)
+        
+    name = models.CharField(max_length=20, default="printout", blank=True, help_text="자동 지정(입력 X)", editable=False)
+    ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
+    desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
+    link_ok = models.BooleanField(default=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
+    prefix = models.CharField(max_length=50, default="product_source/printout")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
+
+    class Meta:
+        verbose_name_plural = "각종 인쇄"
+
+# 앨범
+class product_album(models.Model):
+    def auto_naming(self, filename):
+        upload_to = f'{self.prefix}'
+        uuid_name = uuid4().hex
+        if self:
+            ext = filename.split('.')[-1]
+            filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
+            
+        return os.path.join(upload_to, filename)
+        
+    name = models.CharField(max_length=20, default="album", blank=True, help_text="자동 지정(입력 X)", editable=False)
+    ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
+    desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
+    link_ok = models.BooleanField(default=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
+    prefix = models.CharField(max_length=50, default="product_source/album")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
+
+    class Meta:
+        verbose_name_plural = "앨범"
+
+# 각종 병원 양식
+class product_hospital(models.Model):
+    def auto_naming(self, filename):
+        upload_to = f'{self.prefix}'
+        uuid_name = uuid4().hex
+        if self:
+            ext = filename.split('.')[-1]
+            filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
+            
+        return os.path.join(upload_to, filename)
+        
+    name = models.CharField(max_length=20, default="hospital", blank=True, help_text="자동 지정(입력 X)", editable=False)
+    ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
+    desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
+    link_ok = models.BooleanField(default=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
+    prefix = models.CharField(max_length=50, default="product_source/hospital")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
+
+    class Meta:
+        verbose_name_plural = "각종 병원 양식"
+
+# 석부작 작품
+class product_rock(models.Model):
+    def auto_naming(self, filename):
+        upload_to = f'{self.prefix}'
+        uuid_name = uuid4().hex
+        if self:
+            ext = filename.split('.')[-1]
+            filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
+            
+        return os.path.join(upload_to, filename)
+        
+    name = models.CharField(max_length=20, default="rock", blank=True, help_text="자동 지정(입력 X)", editable=False)
+    ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
+    desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
+    link_ok = models.BooleanField(default=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
+    prefix = models.CharField(max_length=50, default="product_source/rock")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
+
+    class Meta:
+        verbose_name_plural = "석부작 작품"
+
+# 웨딩 사진 출력
+class product_wedding(models.Model):
+    def auto_naming(self, filename):
+        upload_to = f'{self.prefix}'
+        uuid_name = uuid4().hex
+        if self:
+            ext = filename.split('.')[-1]
+            filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
+            
+        return os.path.join(upload_to, filename)
+        
+    name = models.CharField(max_length=20, default="wedding", blank=True, help_text="자동 지정(입력 X)", editable=False)
+    ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
+    desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
+    link_ok = models.BooleanField(default=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
+    prefix = models.CharField(max_length=50, default="product_source/wedding")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
+
+    class Meta:
+        verbose_name_plural = "웨딩 사진 출력"
+
+# 혜천문화사 프로필
+class product_profile(models.Model):
+    def auto_naming(self, filename):
+        upload_to = f'{self.prefix}'
+        uuid_name = uuid4().hex
+        if self:
+            ext = filename.split('.')[-1]
+            filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
+            
+        return os.path.join(upload_to, filename)
+        
+    name = models.CharField(max_length=20, default="profile", blank=True, help_text="자동 지정(입력 X)", editable=False)
+    ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
+    desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
+    link_ok = models.BooleanField(default=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
+    prefix = models.CharField(max_length=50, default="product_source/profile")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
+
+    class Meta:
+        verbose_name_plural = "혜천문화사 프로필"
