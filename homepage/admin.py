@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import product_bigcoating, product_exhibit, product_nametag, product_print, product_poster, product_paper, product_report, product_etc, product_bindding, product_binder, product_catalog, product_creature_of_prize, product_drawing, product_hard, product_index, product_invite, product_memorial, product_post_it, product_prize, product_report_box, product_spring, product_form_board, product_shoppingbag, product_envelope, product_namecard, product_sticker, product_album, product_bici, product_general_binding, product_printout, product_hospital, product_list, product_photo, product_profile, product_wedding, product_rock
+from .models import product_bigcoating, product_exhibit, product_nametag, product_print, product_poster, product_paper
+from .models import product_report, product_etc, product_bindding, product_binder, product_catalog, product_creature_of_prize, product_drawing
+from .models import product_hard, product_index, product_invite, product_memorial, product_post_it, product_prize, product_report_box, product_spring
+from .models import product_form_board, product_shoppingbag, product_envelope, product_namecard, product_sticker, product_album, product_bici 
+from .models import product_general_binding, product_printout, product_hospital, product_list, product_photo, product_profile, product_wedding
+from .models import product_rock, product_diary, product_calendar
 # from .models import product_list
 
 class customAdmin(admin.ModelAdmin):
@@ -43,5 +48,7 @@ admin.site.register(product_hospital, customAdmin),
 admin.site.register(product_rock, customAdmin),
 admin.site.register(product_wedding, customAdmin),
 admin.site.register(product_profile, customAdmin),
+admin.site.register(product_diary, customAdmin),
+admin.site.register(product_calendar, customAdmin),
 
 admin.site.register(product_list),

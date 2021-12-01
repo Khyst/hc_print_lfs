@@ -2,13 +2,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.core.mail import EmailMessage # 이메일 메시지롤 보내기 위한 장고 기능
 
-from .models import product_bigcoating, product_general_binding, product_hospital, product_print, product_poster, product_paper, product_report, product_etc
+from .models import product_bigcoating, product_calendar, product_diary, product_general_binding, product_hospital, product_print, product_poster, product_paper, product_report, product_etc
 from .models import product_bindding, product_binder, product_catalog, product_creature_of_prize, product_drawing
 from .models import product_hard, product_index, product_invite, product_memorial, product_post_it
 from .models import product_prize, product_report_box, product_spring, product_form_board, product_shoppingbag
 from .models import product_envelope, product_namecard, product_sticker, product_nametag, product_exhibit
 from .models import product_bindding, product_photo, product_general_binding, product_bici, product_hospital
-from .models import product_printout, product_album, product_profile, product_rock, product_wedding
+from .models import product_printout, product_album, product_profile, product_rock, product_wedding, product_calendar, product_diary
 from .models import product_list
 
 # from .models import product_list
@@ -36,7 +36,8 @@ def customer(request):
 def initial_list(request):
     product_li = ["report", "poster", "formboard", "paper", "hard", 
     "spring", "binder", "catalog", "print", "invite", "creature_of_prize", "memorial", "postit", "shoppingbag", "envelope",
-    "namecard", "sticker", "exhibit", "photo", "big_coating", "bici", "printout", "album", "hospital", "profile", "rock", "wedding"]
+    "namecard", "sticker", "exhibit", "photo", "big_coating", "bici", "printout", "album", "hospital", "profile", "rock", "wedding"
+    ,"calendar", "diary"]
 
     for product in product_li:
         try:
@@ -99,6 +100,8 @@ def product(request):
         "product_rock" : product_rock.objects.all(),
         "product_wedding" : product_wedding.objects.all(),
         "product_profile" : product_profile.objects.all(),
+        "product_diary" : product_diary.objects.all(),
+        "product_calendar" : product_diary.objects.all(),
         }
         
     return render(request, 'base_product.html', context)
@@ -354,6 +357,24 @@ def initial(request): #초기화 하는 코드
         temp_elem.save()
     f.close()
 
+    # 다이어리
+    f = open(os.path.join(BASE, "product_urls", "diary_url.txt"))
+    lines = f.readlines()
+    for line in lines:
+        line = line.strip()
+        temp_elem = product_diary(name=line[:line.find(".")], ext=line[line.find(".")+1:])
+        temp_elem.save()
+    f.close()
+
+    # 달력
+    f = open(os.path.join(BASE, "product_urls", "calendar_url.txt"))
+    lines = f.readlines()
+    for line in lines:
+        line = line.strip()
+        temp_elem = product_calendar(name=line[:line.find(".")], ext=line[line.find(".")+1:])
+        temp_elem.save()
+    f.close()
+
     return redirect('product')
 
 def delete_init(request):
@@ -392,7 +413,9 @@ def delete_init(request):
     product_wedding.objects.all().delete()
     product_profile.objects.all().delete()
     product_rock.objects.all().delete()
-
+    product_diary.objects.all().delete()
+    product_calendar.objects.all().delete()
+    
     return redirect('product')
 
 def product_view(request, product_name):
@@ -431,6 +454,8 @@ def product_view(request, product_name):
         "product_rock": product_rock.objects.all(),
         "product_profile": product_profile.objects.all(),
         "product_wedding": product_wedding.objects.all(),
+        "product_diary" : product_diary.objects.all(),
+        "product_calendar" : product_calendar.objects.all(),
     }
     
     connectUrl = 'product_detail/product_' + product_name + '.html'

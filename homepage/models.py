@@ -33,10 +33,13 @@ dict_product = {
         "rock" : "석부작 작품",
         "wedding" : "웨딩사진 출력",
         "profile" : "혜천문화사 프로필",
+        "diary" : "다이어리",
+        "calendar" : "달력", 
 }
 
 class product_list(models.Model):
     list_name = models.CharField(max_length=20, default="")
+
     def __str__(self):
         try:
             return str(dict_product[self.list_name])
@@ -141,7 +144,7 @@ class product_form_board(models.Model):
 
 # 논문
 class product_paper(models.Model):
-    def auto_naming(self, filename):    
+    def auto_naming(self, filename):
         upload_to = f'{self.prefix}'
         uuid_name = uuid4().hex
         if self:
@@ -155,13 +158,12 @@ class product_paper(models.Model):
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
-    link_ok = models.BooleanField(default=True, verbose_name="이미지 직접 추가 여부:", help_text="이미지를 파일 추가를 해서 입력 하면 체크", editable=False)
-    
+    link_ok = models.BooleanField(default=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
     src = models.FileField(blank=True, upload_to=auto_naming)
     prefix = models.CharField(max_length=50, default="product_source/paper/")
     create_at = models.DateTimeField(auto_now_add=True, blank=True)
     update_at = models.DateTimeField(auto_now=True, blank=True)
-
     def __str__(self):
         try:
             return str(dict_product[self.name]) + str(self.pk)
@@ -1128,6 +1130,7 @@ class product_wedding(models.Model):
     class Meta:
         verbose_name_plural = "웨딩 사진 출력"
 
+
 # 혜천문화사 프로필
 class product_profile(models.Model):
     def auto_naming(self, filename):
@@ -1159,3 +1162,105 @@ class product_profile(models.Model):
 
     class Meta:
         verbose_name_plural = "혜천문화사 프로필"
+
+
+# 다이어리
+class product_diary(models.Model):
+    prod_name = "diary"
+
+    def auto_naming(self, filename):
+        upload_to = f'{self.prefix}'
+        uuid_name = uuid4().hex
+        if self:
+            ext = filename.split('.')[-1]
+            filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
+            
+        return os.path.join(upload_to, filename)
+        
+    name = models.CharField(max_length=20, default=prod_name, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
+    desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
+    link_ok = models.BooleanField(default=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
+    prefix = models.CharField(max_length=50, default="product_source/"+prod_name)
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
+
+    class Meta:
+        verbose_name_plural = "다이어리"
+
+# 달력 (캘린더)
+class product_calendar(models.Model):
+    prod_name = "calendar"
+
+    def auto_naming(self, filename):
+        upload_to = f'{self.prefix}'
+        uuid_name = uuid4().hex
+        if self:
+            ext = filename.split('.')[-1]
+            filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
+            
+        return os.path.join(upload_to, filename)
+        
+    name = models.CharField(max_length=20, default=prod_name, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
+    desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
+    link_ok = models.BooleanField(default=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
+    prefix = models.CharField(max_length=50, default="product_source/"+prod_name)
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
+
+    class Meta:
+        verbose_name_plural = "달력 (캘린더) "
+
+# 달력 (캘린더)
+class product(models.Model):
+    def auto_naming(self, filename):
+        upload_to = f'{self.prefix}'
+        uuid_name = uuid4().hex
+        if self:
+            ext = filename.split('.')[-1]
+            filename = '{}_{}.{}'.format(self.prefix.split('/')[-2], uuid_name, ext)
+            self.ext = ext
+            
+        return os.path.join(upload_to, filename)
+        
+    name = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
+    desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
+    link_ok = models.BooleanField(default=False)
+    video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
+    src = models.FileField(blank=True, upload_to=auto_naming)
+    prefix = models.CharField(max_length=50, default="product_source/")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        try:
+            return str(dict_product[self.name]) + str(self.pk)
+        except:
+            return str(self.name) + str(self.pk)
+
+    class Meta:
+        verbose_name_plural = "달력 (캘린더) "
+

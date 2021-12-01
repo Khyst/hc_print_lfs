@@ -246,6 +246,18 @@
               </div>
             </div>
 
+            <div class="product_view_wrap">
+              <div class="owl-item border rounded product_view_list">
+                <a href="{% url 'product_detail' 'diary' %}"><img src="{% static 'assets/images/hcopy_diary_menu.png'%}" alt="" onclick=""></a>
+              </div>
+            </div>
+
+            <div class="product_view_wrap">
+              <div class="owl-item border rounded product_view_list">
+                <a href="{% url 'product_detail' 'calendar' %}"><img src="{% static 'assets/images/hcopy_calendar_menu.png'%}" alt="" onclick=""></a>
+              </div>
+            </div>
+
         </div>
     </div>
 
@@ -374,6 +386,15 @@
     </div>
     <div class="col-2">
       <a href="{% url 'product_detail' 'profile' %}"><img src="{% static 'assets/images/hcopy_profile_menu.png'%}" alt="" onclick=""></a>
+    </div>
+    <div class="col-2">
+      <a href="{% url 'product_detail' 'diary' %}"><img src="{% static 'assets/images/hcopy_diary_menu.png'%}" alt="" onclick=""></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <a href="{% url 'product_detail' 'calendar' %}"><img src="{% static 'assets/images/hcopy_calendar_menu.png'%}" alt="" onclick=""></a>
     </div>
   </div>
   <hr>
