@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-%ff7hw_z%_bybjj$_ne1-8%cvgj4d!=2wj8n=w@u065b*m3rrf
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*",]
 
@@ -40,6 +40,8 @@ ALLOWED_HOSTS = ["*",]
 
 INSTALLED_APPS = [
     # 'suit',
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -145,3 +147,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'

@@ -36,6 +36,8 @@ def initial_list(request):
             product_list(list_name=product).save()
         except:
             pass
+    
+    redirect('product')
 
 def transfer_to_email(request):
     if request.method == 'POST':
@@ -61,44 +63,6 @@ def product_page(request):
                             "spring", "binder", "catalog", "print", "invite", "creature_of_prize", "memorial", "postit", "shoppingbag", "envelope",
                             "namecard", "sticker", "exhibit", "photo", "bigcoating", "bici", "printout", "album", "hospital", "profile", "rock", "wedding"
                             ,"calendar", "diary", "prize", "index", "drawing", "general_binding"],
-                            
-        "product_print": product.objects.filter(name="print"),
-        "product_poster": product.objects.filter(name="poster"),
-        "product_paper": product.objects.filter(name="paper"), 
-        "product_report": product.objects.filter(name="report"),
-        "product_etc": product.objects.filter(name="etc"), 
-        "product_bindding": product.objects.filter(name="bindding"), 
-        "product_binder": product.objects.filter(name="binder"), 
-        "product_catalog": product.objects.filter(name="catalog"), 
-        "product_creature_of_prize": product.objects.filter(name="creature_of_prize"), 
-        "product_drawing": product.objects.filter(name="drawing"), 
-        "product_hard": product.objects.filter(name="hard"), 
-        "product_index": product.objects.filter(name="index"), 
-        "product_invite": product.objects.filter(name="invite"),
-        "product_memorial": product.objects.filter(name="memorial"), 
-        "product_post_it": product.objects.filter(name="post_it"), 
-        "product_prize": product.objects.filter(name="prize"), 
-        "product_report_box": product.objects.filter(name="report_box"), 
-        "product_spring": product.objects.filter(name="spring"), 
-        "product_form_board": product.objects.filter(name="form_board"),
-        "product_shoppingbag": product.objects.filter(name="shoppingbag"), 
-        "product_envelope": product.objects.filter(name="envelope"), 
-        "product_namecard": product.objects.filter(name="namecard"),
-        "product_sticker": product.objects.filter(name="sticker"),
-        "product_nametag" : product.objects.filter(name="nametag"),
-        "product_exhibit" : product.objects.filter(name="exhibit"),
-        "product_bigcoating" : product.objects.filter(name="bigcoating"),
-        "product_general_binding" : product.objects.filter(name="general_binding"),
-        "product_photo" : product.objects.filter(name="photo"),
-        "product_hospital": product.objects.filter(name="hospital"),
-        "product_bici" : product.objects.filter(name="bici"),
-        "product_printout": product.objects.filter(name="printout"),
-        "product_album": product.objects.filter(name="album"),
-        "product_rock" : product.objects.filter(name="rock"),
-        "product_wedding" : product.objects.filter(name="wedding"),
-        "product_profile" : product.objects.filter(name="profile"),
-        "product_diary" : product.objects.filter(name="diary"),
-        "product_calendar" : product.objects.filter(name="calendar"),
         }
 
     return render(request, 'base_product.html', context)
@@ -114,96 +78,64 @@ def initial(request): #초기화 하는 코드 -> 제품 으로 통합
             line = line.strip()
             print(line)
             print(category_name)
-            temp_elem = product(name=line[:line.find(".")], ext=line[line.find(".")+1:], category=product_list.objects.get(list_name=category_name))
+            temp_elem = product(name=line[:line.find(".")], ext=line[line.find(".")+1:], category=product_list.objects.get(list_name=category_name), src="product_source/"+category_name+"/"+line)
             temp_elem.save()
             print(line[:line.find(".")], line[line.find(".")+1:])
         f.close()
+    redirect('product')
 
 def delete_init(request):
-    product.objects.filter(name="print").delete()
-    product.objects.filter(name="poster").delete()
-    product.objects.filter(name="paper").delete()
-    product.objects.filter(name="report").delete()
-    product.objects.filter(name="etc").delete()
-    product.objects.filter(name="bindding").delete()
-    product.objects.filter(name="binder").delete()
-    product.objects.filter(name="catalog").delete()
-    product.objects.filter(name="creature_of_prize").delete()
-    product.objects.filter(name="drawing").delete()
-    product.objects.filter(name="hard").delete()
-    product.objects.filter(name="index").delete()
-    product.objects.filter(name="invite").delete()
-    product.objects.filter(name="memorial").delete()
-    product.objects.filter(name="post_it").delete()
-    product.objects.filter(name="prize").delete()
-    product.objects.filter(name="report_box").delete()
-    product.objects.filter(name="spring").delete()
-    product.objects.filter(name="form_board").delete()
-    product.objects.filter(name="shoppingbag").delete() 
-    product.objects.filter(name="envelope").delete() 
-    product.objects.filter(name="namecard").delete() 
-    product.objects.filter(name="sticker").delete()
-    product.objects.filter(name="exhibit").delete()
-    product.objects.filter(name="bigcoating").delete()
-    product.objects.filter(name="nametag").delete()
-    product.objects.filter(name="general_binding").delete()
-    product.objects.filter(name="photo").delete()
-    product.objects.filter(name="bici").delete()
-    product.objects.filter(name="hospital").delete()
-    product.objects.filter(name="printout").delete()
-    product.objects.filter(name="album").delete()
-    product.objects.filter(name="wedding").delete()
-    product.objects.filter(name="profile").delete()
-    product.objects.filter(name="rock").delete()
-    product.objects.filter(name="diary").delete()
-    product.objects.filter(name="calendar").delete()
-    
+    product.objects.all().delete()
     return redirect('product')
 
 def product_view(request, product_name):
 
+    dict_product = {
+        "hospital" : "각종 병원 양식",
+        "album" : "앨범",
+        "printout" : "각종 인쇄",
+        "bici" : "BI & CI 간판 디자인",
+        "bigcoating" : "대형 코팅",
+        "photo" : "상업용 사진",
+        "exhibit" : "전시회 백월 포스터",
+        "sticker" : "스티커",
+        "namecard" : "명함",
+        "envelope" : "봉투",
+        "shoppingbag" : "쇼핑백",
+        "postit" : "포스트잇",
+        "memorial" : "기념품",
+        "creature_of_prize" : "상패 디자인",
+        "invite" : "청첩장 & 초대장",
+        "prize" : "상장 & 단증",
+        "print" : "각종 출력",
+        "catalog" : "카탈로그",
+        "binder" : "바인더",
+        "spring" : "스프링",
+        "hard" : "하드커버제본",
+        "spring" : "스프링제본",
+        "formboard" : "폼보드",
+        "report" : "보고서 & 제안서",
+        "poster" : "포스터 & 학회포스터",
+        "paper" : "논문",
+        "rock" : "석부작 작품",
+        "wedding" : "웨딩사진 출력",
+        "profile" : "혜천문화사 프로필",
+        "diary" : "다이어리",
+        "calendar" : "달력", 
+        "general_binding" : "일반 제본 및 교본",
+        "index" : "인덱스",
+        "drawing" : "도면 제본",
+        "big_coating" : "대형코팅",
+    }
+
     context = {
+        "product_detail" : product.objects.filter(name=product_name),
         "product_li" : ["report", "poster", "formboard", "paper", "hard", 
                             "spring", "binder", "catalog", "print", "invite", "creature_of_prize", "memorial", "postit", "shoppingbag", "envelope",
                             "namecard", "sticker", "exhibit", "photo", "bigcoating", "bici", "printout", "album", "hospital", "profile", "rock", "wedding"
                             ,"calendar", "diary", "prize", "index", "drawing", "general_binding"],
-
-        "product_print": product.objects.filter(name="print"),
-        "product_poster": product.objects.filter(name="poster"),
-        "product_paper": product.objects.filter(name="paper"), 
-        "product_report": product.objects.filter(name="report"),
-        "product_etc": product.objects.filter(name="etc"), 
-        "product_bindding": product.objects.filter(name="bindding"), 
-        "product_binder": product.objects.filter(name="binder"), 
-        "product_catalog": product.objects.filter(name="catalog"), 
-        "product_creature_of_prize": product.objects.filter(name="creature_of_prize"), 
-        "product_drawing": product.objects.filter(name="drawing"), 
-        "product_hard": product.objects.filter(name="hard"), 
-        "product_index": product.objects.filter(name="index"), 
-        "product_invite": product.objects.filter(name="invite"),
-        "product_memorial": product.objects.filter(name="memorial"), 
-        "product_post_it": product.objects.filter(name="post_it"), 
-        "product_prize": product.objects.filter(name="prize"), 
-        "product_report_box": product.objects.filter(name="report_box"), 
-        "product_spring": product.objects.filter(name="spring"), 
-        "product_form_board": product.objects.filter(name="form_board"),
-        "product_shoppingbag": product.objects.filter(name="shoppingbag"), 
-        "product_envelope": product.objects.filter(name="envelope"), 
-        "product_namecard": product.objects.filter(name="namecard"),
-        "product_sticker": product.objects.filter(name="sticker"),
-        "product_nametag": product.objects.filter(name="nametag"),
-        "product_exhibit": product.objects.filter(name="exhibit"),
-        "product_bigcoating": product.objects.filter(name="bigcoating"),
-        "product_general_binding": product.objects.filter(name="general_binding"),
-        "product_hospital": product.objects.filter(name="hospital"),
-        "product_bici": product.objects.filter(name="bici"),
-        "product_printout": product.objects.filter(name="printout"),
-        "product_album": product.objects.filter(name="album"),
-        "product_rock": product.objects.filter(name="rock"),
-        "product_profile": product.objects.filter(name="profile"),
-        "product_wedding": product.objects.filter(name="wedding"),
-        "product_diary": product.objects.filter(name="diary"),
-        "product_calendar": product.objects.filter(name="calendar"),
+        "product_name" : product_name,
+        "product_title": dict_product[product_name],
     }
-    connectUrl = 'product_detail/product_' + product_name + '.html'
-    return render(request, connectUrl, context)
+
+    return render(request, "product_detail/product_detail.html", context)
