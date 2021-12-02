@@ -24,7 +24,7 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('default/', views.blog_to_home),
     path('prod_list/<str:product_name>/', views.product_view, name='product_detail'),
-    path('product/', views.product, name="product"),
+    path('product/', views.product_page, name="product"),
     path('introduce/', views.introduce, name="introduce"),
     path('notice/', views.notice, name="notice"),
     path('customer/', views.customer, name="customer"), 

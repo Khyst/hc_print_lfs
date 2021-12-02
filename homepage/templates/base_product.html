@@ -71,193 +71,13 @@
     <div class="owl-stage-outer">
         <div class="owl-stage d-flex justify-content-around">
 
+          {% for elem in product_li %}
             <div class="product_view_wrap">
               <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'report' %}"><img src="{% static 'assets/images/hcopy_report_menu.png'%}" alt=""></a> 
+                <a href="{% url 'product_detail' elem %}"><img src="{% get_static_prefix %}assets/images/hcopy_{{elem}}_menu.png" alt=""></a> 
               </div>
             </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'poster' %}"><img src="{% static 'assets/images/hcopy_poster_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'formboard' %}"><img src="{% static 'assets/images/hcopy_formboard_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'paper' %}"><img src="{% static 'assets/images/hcopy_paper_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'hard' %}"><img src="{% static 'assets/images/hcopy_hard_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'drawing' %}"><img src="{% static 'assets/images/hcopy_drawing_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'spring' %}"><img src="{% static 'assets/images/hcopy_spring_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'binder' %}"><img src="{% static 'assets/images/hcopy_binder_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'catalog' %}"><img src="{% static 'assets/images/hcopy_catalog_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-            
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'print' %}"><img src="{% static 'assets/images/hcopy_print_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'invite' %}"><img src="{% static 'assets/images/hcopy_invite_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'prize' %}"><img src="{% static 'assets/images/hcopy_prize_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'creature_of_prize' %}"><img src="{% static 'assets/images/hcopy_creature_of_prize_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'memorial' %}"><img src="{% static 'assets/images/hcopy_memorial_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'postit' %}"><img src="{% static 'assets/images/hcopy_postit_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'shoppingbag' %}"><img src="{% static 'assets/images/hcopy_shoppingbag_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'envelope' %}"><img src="{% static 'assets/images/hcopy_envelope_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'namecard' %}"><img src="{% static 'assets/images/hcopy_namecard_menu.png'%}" alt=""></a> 
-              </div>
-            </div>
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'sticker' %}"><img src="{% static 'assets/images/hcopy_sticker_menu.png'%}" alt=""></a> 
-              </div>
-            </div>
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'exhibit' %}"><img src="{% static 'assets/images/hcopy_exhibit_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'photo' %}"><img src="{% static 'assets/images/hcopy_photo_menu.png'%}" alt=""></a> 
-              </div>
-            </div> 
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'big_coating' %}"><img src="{% static 'assets/images/hcopy_big_coating_menu.png'%}" alt=""></a> 
-              </div>
-            </div>
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'printout' %}"><img src="{% static 'assets/images/hcopy_printout_menu.png'%}" alt=""></a> 
-              </div>
-            </div>
-
-            
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'hospital' %}"><img src="{% static 'assets/images/hcopy_hospital_menu.png'%}" alt=""></a> 
-              </div>
-            </div>
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'bici' %}"><img src="{% static 'assets/images/hcopy_bici_menu.png'%}" alt=""></a> 
-              </div>
-            </div>
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'album' %}"><img src="{% static 'assets/images/hcopy_album_menu.png'%}" alt=""></a> 
-              </div>
-            </div>
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'wedding' %}"><img src="{% static 'assets/images/hcopy_wedding_menu.png'%}" alt="" onclick=""></a>
-              </div>
-            </div>
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'rock' %}"><img src="{% static 'assets/images/hcopy_rock_menu.png'%}" alt="" onclick=""></a>
-              </div>
-            </div>
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'profile' %}"><img src="{% static 'assets/images/hcopy_profile_menu.png'%}" alt="" onclick=""></a>
-              </div>
-            </div>
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'diary' %}"><img src="{% static 'assets/images/hcopy_diary_menu.png'%}" alt="" onclick=""></a>
-              </div>
-            </div>
-
-            <div class="product_view_wrap">
-              <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' 'calendar' %}"><img src="{% static 'assets/images/hcopy_calendar_menu.png'%}" alt="" onclick=""></a>
-              </div>
-            </div>
-
+          {% endfor %}
         </div>
     </div>
 
@@ -291,6 +111,11 @@
 </div>
 <div class="pc_product_view">
   <hr>
+  {% comment %} {% for elem in product_li %}
+    <div class="col-2">
+      <a href="{% url 'product_detail' 'report' %}"><img src="{% static 'assets/images/hcopy_'+ elem +'_menu.png'%}" alt="" onclick=""></a>
+    </div>
+  {% endfor %} {% endcomment %}
   <div class="row">
     <div class="col-2">
      <a href="{% url 'product_detail' 'report' %}"><img src="{% static 'assets/images/hcopy_report_menu.png'%}" alt="" onclick=""></a>

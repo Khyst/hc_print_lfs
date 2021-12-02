@@ -31,8 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%ff7hw_z%_bybjj$_ne1-8%cvgj4d!=2wj8n=w@u065b*m3rrf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
-DEBUG = False 
+DEBUG = True 
 
 ALLOWED_HOSTS = ["*",]
 
@@ -40,6 +39,8 @@ ALLOWED_HOSTS = ["*",]
 
 INSTALLED_APPS = [
     # 'suit',
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -145,3 +146,50 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+JET_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
+
+JET_DEFAULT_THEME = 'light-gray'
+
+JET_SIDE_MENU_COMPACT = True
+
+JET_CHANGE_FORM_SIBLING_LINKS = True
+
+JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
+
+JET_THEMES = [
+            {
+                        'theme': 'default', # theme folder name
+                                'color': '#47bac1', # color of the theme's button in user menu
+                                        'title': 'Default' # theme title
+                                            },
+                {
+                            'theme': 'green',
+                                    'color': '#44b78b',
+                                            'title': 'Green'
+                                                },
+                    {
+                                'theme': 'light-green',
+                                        'color': '#2faa60',
+                                                'title': 'Light Green'
+                                                    },
+                        {
+                                    'theme': 'light-violet',
+                                            'color': '#a464c4',
+                                                    'title': 'Light Violet'
+                                                        },
+                            {
+                                        'theme': 'light-blue',
+                                                'color': '#5EADDE',
+                                                        'title': 'Light Blue'
+                                                            },
+                                {
+                                            'theme': 'light-gray',
+                                                    'color': '#222',
+                                                            'title': 'Light Gray'
+                                                                }
+                                ]
+
+

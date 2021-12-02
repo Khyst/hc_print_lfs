@@ -19,9 +19,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
+    # Homepage URL
     path('', include('homepage.urls')),
+
+    # Authentication URL
     path('auth/', include('user_auth.urls')),
+
+    # Admin URL
+    path('jet/', include('jet.urls', 'jet')), # Django JET Urls
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')), # Django JET Dashboard URLS
+    path('admin/', admin.site.urls),
 ]
 
+# URL Settings for Using Media File
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
