@@ -4,9 +4,9 @@ from .models import product
 # from .models import product_list
 
 class customAdmin(admin.ModelAdmin):
-    list_display = ['name', 'ext', 'title', 'desc', 'src', 'prefix']
-    list_display_links = ['name', 'title']
-    search_fields = ['title', 'desc', 'name', 'ext']
+    list_display = ['displayed_name', 'ext', 'title', 'desc', 'src', 'prefix']
+    list_display_links = ['displayed_name', 'title']
+    search_fields = ['title', 'desc', 'displayed_name', 'name', 'ext']
 
 
 # Register your models here.

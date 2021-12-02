@@ -49,6 +49,9 @@ class product_list(models.Model):
         except:
             return str(self.list_name)
 
+    class Meta:
+        verbose_name_plural = "제품 리스트"
+
 # 바뀔 데이터베이스
 class product(models.Model):
     def auto_naming(self, filename):
@@ -65,6 +68,7 @@ class product(models.Model):
         return os.path.join(upload_to, str(self.category.list_name), filename)
         
     name = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    displayed_name= models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
@@ -78,6 +82,8 @@ class product(models.Model):
     def save(self, *args, **kwargs):
         print(self.category.list_name)
         self.name = self.category.list_name
+        print("name:", self.name)
+        self.displayed_name = dict_product[self.name]
         print(str(self.src)[str(self.src).find(".")+1:])
         self.ext = str(self.src)[str(self.src).find(".")+1:]
         self.prefix = self.prefix + self.name + '/'
