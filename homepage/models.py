@@ -67,16 +67,16 @@ class product(models.Model):
             
         return os.path.join(upload_to, str(self.category.list_name), filename)
         
-    name = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
-    displayed_name= models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
-    ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False)
+    name = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False, verbose_name="파일 이름")
+    displayed_name= models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False, verbose_name="이름")
+    ext = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False, verbose_name="확장자")
     title = models.CharField(max_length=20, blank= True, verbose_name="제목", help_text="페이지에 들어갈 이미지에 대한 제목 ( 입력 안해도 됨 )")
     desc = models.TextField(blank= True, verbose_name="설명", help_text="페이지에 들어갈 이미지에 대한 자세한 설명 (입력 안해도 됨 )")
     video_ok = models.BooleanField(default=False, verbose_name="동영상 여부: ", help_text="동영상 파일을 업로드 할 경우 체크해주세요!!")
-    src = models.FileField(blank=True, upload_to=auto_naming)
-    prefix = models.CharField(max_length=50, default="product_source/", editable=False)
-    create_at = models.DateTimeField(auto_now_add=True, blank=True)
-    update_at = models.DateTimeField(auto_now=True, blank=True)
+    src = models.FileField(blank=True, upload_to=auto_naming, verbose_name="미디어 파일(클릭시 보여짐)")
+    prefix = models.CharField(max_length=50, default="product_source/", editable=False, verbose_name="미디어 파일 경로")
+    create_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name="생성된 날짜")
+    update_at = models.DateTimeField(auto_now=True, blank=True, verbose_name="업데이트된 날짜")
     category = models.ForeignKey("product_list", on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):

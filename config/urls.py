@@ -27,8 +27,8 @@ urlpatterns = [
     path('auth/', include('user_auth.urls')),
 
     # Admin URL
-    path('jet/', include('jet.urls', 'jet')), # Django JET Urls
-    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')), # Django JET Dashboard URLS
+    # path('jet/', include('jet.urls', 'jet')), # Django JET Urls
+    # path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')), # Django JET Dashboard URLS
     path('admin/', admin.site.urls),
 ]
 

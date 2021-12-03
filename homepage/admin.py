@@ -5,7 +5,7 @@ from .models import product
 
 class customAdmin(admin.ModelAdmin):
     list_display = ['displayed_name', 'ext', 'title', 'desc', 'src', 'prefix']
-    list_display_links = ['displayed_name', 'title']
+    list_display_links = ['displayed_name', 'title', 'ext', 'desc', 'prefix']
     search_fields = ['title', 'desc', 'displayed_name', 'name', 'ext']
 
 
