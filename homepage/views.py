@@ -48,14 +48,18 @@ def transfer_to_email(request):
         tel = request.POST['tel']
 
         email = EmailMessage(
-            subject,
-            "이름(" + name + ")" + " 이메일(" + email + ") 전화번호(" + tel + ")" + "이 보낸 메시지: " + message,
+            "혜천문화사 홈페이지를 통해 다음과 같은 문의사항이 들어왔습니다 : " + str(subject),
+
+            "이름(" + name + ")" + " 이메일(" + email + ") 전화번호(" + tel + ")"
+            + "<br> 문의한 내용 : " + message,
+
             email,
-            to = ['hccopy@naver.com', 'kyh48752242@gmail.com'], # 서버 전송용 프로토콜
+            
+            to = ['hccopy@naver.com'], # 서버 전송용 프로토콜
         )
 
         email.send()
-        return redirect('')
+    return redirect('home')
 
 def product_page(request):
     context = {
