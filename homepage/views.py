@@ -81,25 +81,25 @@ def initial_list(request):
     redirect('product')
 
 def transfer_to_email(request):
-    if request.method == 'POST':
-        name = request.POST['name']
-        email = request.POST['email']
-        subject = request.POST['subject']
-        message = request.POST['message']
-        tel = request.POST['tel']
+    # if request.method == 'POST':
+    #     name = request.POST['name']
+    #     email = request.POST['email']
+    #     subject = request.POST['subject']
+    #     message = request.POST['message']
+    #     tel = request.POST['tel']
 
-        email = EmailMessage(
-            "혜천문화사 홈페이지를 통해 다음과 같은 문의사항이 들어왔습니다 : " + str(subject),
+    #     email = EmailMessage(
+    #         "혜천문화사 홈페이지를 통해 다음과 같은 문의사항이 들어왔습니다 : " + str(subject),
 
-            "이름(" + name + ")" + " 이메일(" + email + ") 전화번호(" + tel + ")"
-            + "<br> 문의한 내용 : " + message,
+    #         "이름(" + name + ")" + " 이메일(" + email + ") 전화번호(" + tel + ")"
+    #         + "<br> 문의한 내용 : " + message,
 
-            email,
+    #         email,
             
-            to = ['hccopy@naver.com'], # 서버 전송용 프로토콜
-        )
+    #         to = ['hccopy@naver.com'], # 서버 전송용 프로토콜
+    #     )
 
-        email.send()
+    #     email.send()
     return redirect('home')
 
 def product_page(request):
