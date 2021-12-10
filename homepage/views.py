@@ -25,18 +25,59 @@ def introduce(request):
 def customer(request):
     return render(request, 'home/customer.html')
 
-def initial_list(request):
-    product_li = ["report", "poster", "formboard", "paper", "hard", 
-    "spring", "binder", "catalog", "print", "invite", "creature_of_prize", "memorial", "postit", "shoppingbag", "envelope",
-    "namecard", "sticker", "exhibit", "photo", "bigcoating", "bici", "printout", "album", "hospital", "profile", "rock", "wedding"
-    ,"calendar", "diary", "prize", "index", "drawing", "general_binding"]
+product_li = dict()
+step = 0
+for elem in product_list.objects.all():
+    product_li[step] = elem.list_name
+    step = step + 1
 
-    for product in product_li:
+dict_product = {
+    "hospital" : "각종 병원 양식",
+    "album" : "앨범",
+    "printout" : "각종 인쇄",
+    "bici" : "BI & CI 간판 디자인",
+    "bigcoating" : "대형 코팅",
+    "photo" : "상업용 사진",
+    "exhibit" : "전시회 백월 포스터",
+    "sticker" : "스티커",
+    "namecard" : "명함",
+    "envelope" : "봉투",
+    "shoppingbag" : "쇼핑백",
+    "postit" : "포스트잇",
+    "memorial" : "기념품",
+    "creature_of_prize" : "상패 디자인",
+    "invite" : "청첩장 & 초대장",
+    "prize" : "상장 & 단증",
+    "print" : "각종 출력",
+    "catalog" : "카탈로그",
+    "binder" : "바인더",
+    "spring" : "스프링",
+    "hard" : "하드커버제본",
+    "spring" : "스프링제본",
+    "formboard" : "폼보드",
+    "report" : "보고서 & 제안서",
+    "poster" : "포스터 & 학회포스터",
+    "paper" : "논문",
+    "rock" : "석부작 작품",
+    "wedding" : "웨딩사진 출력",
+    "profile" : "혜천문화사 프로필",
+    "diary" : "다이어리",
+    "calendar" : "달력", 
+    "general_binding" : "일반 제본 및 교본",
+    "index" : "인덱스",
+    "drawing" : "도면 제본",
+    "big_coating" : "대형코팅",
+    "master" : "마스터 디자인",
+    "offset" : "오프셋 디자인"
+}
+
+def initial_list(request):
+
+    for idx in range(len(product_li)):
         try:
-            product_list(list_name=product).save()
+            product_list(list_name = product_li[idx]).save()
         except:
             pass
-    
     redirect('product')
 
 def transfer_to_email(request):
@@ -62,82 +103,50 @@ def transfer_to_email(request):
     return redirect('home')
 
 def product_page(request):
-    context = {
-        "product_li" : ["report", "poster", "formboard", "paper", "hard", 
-                            "spring", "binder", "catalog", "print", "invite", "creature_of_prize", "memorial", "postit", "shoppingbag", "envelope",
-                            "namecard", "sticker", "exhibit", "photo", "bigcoating", "bici", "printout", "album", "hospital", "profile", "rock", "wedding"
-                            ,"calendar", "diary", "prize", "index", "drawing", "general_binding"],
-        }
 
+    context = product_li
     return render(request, 'base_product.html', context)
 
 def initial(request): #초기화 하는 코드 -> 제품 으로 통합
     BASE = os.path.dirname(os.path.abspath(__file__))
-    initial_list = ["report", "poster", "formboard", "paper", "hard", "drawing", "spring", "binder", "index", "catalog", "invite", "report_box", "prize", "print", "memorial", "postit", "shoppingbag", "envelope", "namecard", "sticker", "exhibit", "bigcoating", "general_binding", "rock", "wedding", "profile", "diary", "calendar"]
-    for category_name in initial_list:
-        file_path = category_name + "_url.txt"
+    initial_list = product_li
+
+    for category_idx in product_li:
+        file_path = product_li[category_idx] + "_url.txt"
         f = open(os.path.join(BASE, "product_urls", file_path))
         lines = f.readlines()
         for line in lines:
             line = line.strip()
             print(line)
-            print(category_name)
-            temp_elem = product(name=line[:line.find(".")], ext=line[line.find(".")+1:], category=product_list.objects.get(list_name=category_name), src="product_source/"+category_name+"/"+line)
+            print(product_li[category_idx])
+            temp_elem = product(name=line[:line.find(".")], ext=line[line.find(".")+1:], category=product_list.objects.get(list_name=product_li[category_idx]), src="product_source/"+product_li[category_idx]+"/"+line)
             temp_elem.save()
             print(line[:line.find(".")], line[line.find(".")+1:])
         f.close()
     redirect('product')
+
+    # for category_name in initial_list:
+    #     file_path = category_name + "_url.txt"
+    #     f = open(os.path.join(BASE, "product_urls", file_path))
+    #     lines = f.readlines()
+    #     for line in lines:
+    #         line = line.strip()
+    #         print(line)
+    #         print(category_name)
+    #         temp_elem = product(name=line[:line.find(".")], ext=line[line.find(".")+1:], category=product_list.objects.get(list_name=category_name), src="product_source/"+category_name+"/"+line)
+    #         temp_elem.save()
+    #         print(line[:line.find(".")], line[line.find(".")+1:])
+    #     f.close()
+    # redirect('product')
 
 def delete_init(request):
     product.objects.all().delete()
     return redirect('product')
 
 def product_view(request, product_name):
-
-    dict_product = {
-        "hospital" : "각종 병원 양식",
-        "album" : "앨범",
-        "printout" : "각종 인쇄",
-        "bici" : "BI & CI 간판 디자인",
-        "bigcoating" : "대형 코팅",
-        "photo" : "상업용 사진",
-        "exhibit" : "전시회 백월 포스터",
-        "sticker" : "스티커",
-        "namecard" : "명함",
-        "envelope" : "봉투",
-        "shoppingbag" : "쇼핑백",
-        "postit" : "포스트잇",
-        "memorial" : "기념품",
-        "creature_of_prize" : "상패 디자인",
-        "invite" : "청첩장 & 초대장",
-        "prize" : "상장 & 단증",
-        "print" : "각종 출력",
-        "catalog" : "카탈로그",
-        "binder" : "바인더",
-        "spring" : "스프링",
-        "hard" : "하드커버제본",
-        "spring" : "스프링제본",
-        "formboard" : "폼보드",
-        "report" : "보고서 & 제안서",
-        "poster" : "포스터 & 학회포스터",
-        "paper" : "논문",
-        "rock" : "석부작 작품",
-        "wedding" : "웨딩사진 출력",
-        "profile" : "혜천문화사 프로필",
-        "diary" : "다이어리",
-        "calendar" : "달력", 
-        "general_binding" : "일반 제본 및 교본",
-        "index" : "인덱스",
-        "drawing" : "도면 제본",
-        "big_coating" : "대형코팅",
-    }
-
     context = {
         "product_detail" : product.objects.filter(name=product_name),
-        "product_li" : ["report", "poster", "formboard", "paper", "hard", 
-                            "spring", "binder", "catalog", "print", "invite", "creature_of_prize", "memorial", "postit", "shoppingbag", "envelope",
-                            "namecard", "sticker", "exhibit", "photo", "bigcoating", "bici", "printout", "album", "hospital", "profile", "rock", "wedding"
-                            ,"calendar", "diary", "prize", "index", "drawing", "general_binding"],
+        "product_li" : product_li.values(),
         "product_name" : product_name,
         "product_title": dict_product[product_name],
     }

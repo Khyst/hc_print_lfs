@@ -74,7 +74,9 @@
           {% for elem in product_li %}
             <div class="product_view_wrap">
               <div class="owl-item border rounded product_view_list">
-                <a href="{% url 'product_detail' elem %}"><img src="{% get_static_prefix %}assets/images/hcopy_{{elem}}_menu.png" alt=""></a> 
+                <a href="{% url 'product_detail' elem %}">
+                  <img src="{% get_static_prefix %}assets/images/hcopy_{{elem}}_menu.png" alt="">
+                </a> 
               </div>
             </div> 
           {% endfor %}
@@ -220,6 +222,12 @@
   <div class="row">
     <div class="col-2">
       <a href="{% url 'product_detail' 'calendar' %}"><img src="{% static 'assets/images/hcopy_calendar_menu.png'%}" alt="" onclick=""></a>
+    </div>
+    <div class="col-2">
+      <a href="{% url 'product_detail' 'offset' %}"><img src="{% static 'assets/images/hcopy_offset_menu.png'%}" alt="" onclick=""></a>
+    </div>
+    <div class="col-2">
+      <a href="{% url 'product_detail' 'master' %}"><img src="{% static 'assets/images/hcopy_master_menu.png'%}" alt="" onclick=""></a>
     </div>
   </div>
   <hr>
