@@ -67,9 +67,13 @@ dict_product = {
     "index" : "인덱스",
     "drawing" : "도면 제본",
     "big_coating" : "대형코팅",
-    "master" : "마스터 디자인",
-    "offset" : "오프셋 디자인"
+    "master" : "마스터 인쇄",
+    "offset" : "오프셋 인쇄"
 }
+
+list_product = list()
+for elem in product_list.objects.all():
+    list_product.append(elem.list_name)
 
 def initial_list(request):
 
@@ -104,7 +108,7 @@ def transfer_to_email(request):
 
 def product_page(request):
 
-    context = product_li
+    context = {"product_li" : list_product}
     return render(request, 'base_product.html', context)
 
 def initial(request): #초기화 하는 코드 -> 제품 으로 통합
@@ -146,7 +150,7 @@ def delete_init(request):
 def product_view(request, product_name):
     context = {
         "product_detail" : product.objects.filter(name=product_name),
-        "product_li" : product_li.values(),
+        "product_li" : list_product,
         "product_name" : product_name,
         "product_title": dict_product[product_name],
     }
