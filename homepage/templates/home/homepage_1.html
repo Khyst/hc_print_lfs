@@ -60,6 +60,32 @@
   </div>
 </div>
 
+<div class="mobile-main-banner wow fadeIn carousel slide carousel-fade" id="carouselExampleControls" data-bs-ride="carousel" data-wow-duration="1s" data-wow-delay="0.5s">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <a href="#" onclick="makequery()"> <img src="{% static 'assets/images/main_visual1.jpg' %}" style="height:500px;" class="d-block w-100" alt="사진 1"> </a> 
+    </div>
+    <div class="carousel-item">
+      <a href="{% url 'product' %}"> <img src="{% static 'assets/images/main_visual2.jpg' %}" style="height:500px;" class="d-block w-100" alt="사진 2"> </a> 
+    </div>
+    <div class="carousel-item">
+      <a href="http://blog.naver.com/hccopy"> <img src="{% static 'assets/images/main_visual3.jpg' %}" style="height:500px;" class="d-block w-100" alt="사진 3"> </a> 
+    </div>
+    <div class="carousel-item">
+      <a href="http://m.blog.naver.com/hccopy"> <img src="{% static 'assets/images/main_visual4.jpg' %}" style="height:500px;" class="d-block w-100" alt="사진 3"> </a> 
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
 <div class="default ml-auto icon shadow p-3 mb-1 bg-white rounded" style="
     width: auto;
 ">
@@ -125,32 +151,6 @@
       </div>
     </form>
   </div>
-</div>
-
-<div class="mobile-main-banner wow fadeIn carousel slide carousel-fade" id="carouselExampleControls" data-bs-ride="carousel" data-wow-duration="1s" data-wow-delay="0.5s">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <a href="#" onclick="makequery()"> <img src="{% static 'assets/images/main_visual1.jpg' %}" style="height:500px;" class="d-block w-100" alt="사진 1"> </a> 
-    </div>
-    <div class="carousel-item">
-      <a href="{% url 'product' %}"> <img src="{% static 'assets/images/main_visual2.jpg' %}" style="height:500px;" class="d-block w-100" alt="사진 2"> </a> 
-    </div>
-    <div class="carousel-item">
-      <a href="http://blog.naver.com/hccopy"> <img src="{% static 'assets/images/main_visual3.jpg' %}" style="height:500px;" class="d-block w-100" alt="사진 3"> </a> 
-    </div>
-    <div class="carousel-item">
-      <a href="http://m.blog.naver.com/hccopy"> <img src="{% static 'assets/images/main_visual4.jpg' %}" style="height:500px;" class="d-block w-100" alt="사진 3"> </a> 
-    </div>
-  </div>
-
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>
 
 <div id="portfolio" class="our-portfolio section">
