@@ -29,7 +29,7 @@ def initial_list(request):
     product_li = ["report", "poster", "formboard", "paper", "hard", 
     "spring", "binder", "catalog", "print", "invite", "creature_of_prize", "memorial", "postit", "shoppingbag", "envelope",
     "namecard", "sticker", "exhibit", "photo", "bigcoating", "bici", "printout", "album", "hospital", "profile", "rock", "wedding"
-    ,"calendar", "diary", "prize", "index", "drawing", "general_binding"]
+    ,"calendar", "diary", "prize", "index", "drawing", "general", "master", "offset", "academy", "kindergarden"]
 
     for product in product_li:
         try:
@@ -66,14 +66,14 @@ def product_page(request):
         "product_li" : ["report", "poster", "formboard", "paper", "hard", 
                             "spring", "binder", "catalog", "print", "invite", "creature_of_prize", "memorial", "postit", "shoppingbag", "envelope",
                             "namecard", "sticker", "exhibit", "photo", "bigcoating", "bici", "printout", "album", "hospital", "profile", "rock", "wedding"
-                            ,"calendar", "diary", "prize", "index", "drawing", "general_binding"],
+                            ,"calendar", "diary", "prize", "index", "drawing", "general", "master", "offset", "academy", "kindergarden"],
         }
 
     return render(request, 'base_product.html', context)
 
 def initial(request): #초기화 하는 코드 -> 제품 으로 통합
     BASE = os.path.dirname(os.path.abspath(__file__))
-    initial_list = ["report", "poster", "formboard", "paper", "hard", "drawing", "spring", "binder", "index", "catalog", "invite", "report_box", "prize", "print", "memorial", "postit", "shoppingbag", "envelope", "namecard", "sticker", "exhibit", "bigcoating", "general_binding", "rock", "wedding", "profile", "diary", "calendar"]
+    initial_list = ["report", "poster", "formboard", "paper", "hard", "drawing", "spring", "binder", "index", "catalog", "invite", "report_box", "prize", "print", "memorial", "postit", "shoppingbag", "envelope", "namecard", "sticker", "exhibit", "bigcoating", "general", "rock", "wedding", "profile", "diary", "calendar", "master", "offset", "academy"]
     for category_name in initial_list:
         file_path = category_name + "_url.txt"
         f = open(os.path.join(BASE, "product_urls", file_path))
@@ -126,10 +126,13 @@ def product_view(request, product_name):
         "profile" : "혜천문화사 프로필",
         "diary" : "다이어리",
         "calendar" : "달력", 
-        "general_binding" : "일반 제본 및 교본",
+        "general" : "일반 제본 및 교본",
         "index" : "인덱스",
         "drawing" : "도면 제본",
         "big_coating" : "대형코팅",
+        "master": "마스터",
+        "academy" : "각종 학원 교재",
+        "kindergarden" : "각종 유치원 교재",
     }
 
     context = {
@@ -137,7 +140,7 @@ def product_view(request, product_name):
         "product_li" : ["report", "poster", "formboard", "paper", "hard", 
                             "spring", "binder", "catalog", "print", "invite", "creature_of_prize", "memorial", "postit", "shoppingbag", "envelope",
                             "namecard", "sticker", "exhibit", "photo", "bigcoating", "bici", "printout", "album", "hospital", "profile", "rock", "wedding"
-                            ,"calendar", "diary", "prize", "index", "drawing", "general_binding"],
+                            ,"calendar", "diary", "prize", "index", "drawing", "general", "master", "offset", "academy", "kindergarden"],
         "product_name" : product_name,
         "product_title": dict_product[product_name],
     }

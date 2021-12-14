@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     # 'suit',
     # 'jet.dashboard',
     # 'jet',
-    'jazzmin',
+    #'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

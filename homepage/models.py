@@ -38,6 +38,10 @@ dict_product = {
         "general_binding" : "일반 제본 및 교본",
         "index" : "인덱스",
         "drawing" : "도면 제본",
+        "master" : "마스터 인쇄",
+        "offset" : "오프셋 인쇄",
+        "academy" : "각종 학원 교재",
+        "kindergarden" : "각종 유치원 교재",
 }
 
 class product_list(models.Model):
