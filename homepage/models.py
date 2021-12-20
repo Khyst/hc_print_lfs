@@ -46,13 +46,11 @@ dict_product = {
 
 class product_list(models.Model):
     list_name = models.CharField(max_length=20, default="")
-
     def __str__(self):
         try:
             return str(dict_product[self.list_name])
         except:
             return str(self.list_name)
-
     class Meta:
         verbose_name_plural = "제품 리스트"
 
@@ -69,7 +67,7 @@ class product(models.Model):
             filename = '{}_{}.{}'.format(uuid_name, uuid_id, ext)
             self.ext = ext
             
-        return os.path.join(upload_to, str(self.category.list_name), filename)
+        return os.path.join(upload_to, filename)
         
     name = models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False, verbose_name="파일 이름")
     displayed_name= models.CharField(max_length=20, blank=True, help_text="자동 지정(입력 X)", editable=False, verbose_name="이름")
@@ -90,7 +88,8 @@ class product(models.Model):
         self.displayed_name = dict_product[self.name]
         print(str(self.src)[str(self.src).find(".")+1:])
         self.ext = str(self.src)[str(self.src).find(".")+1:]
-        self.prefix = self.prefix + self.name + '/'
+
+        self.prefix = "product_source/" + self.name + "/"
 
         super().save(*args, **kwargs)  # Call the "real" save() method.
 
